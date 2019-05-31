@@ -1,0 +1,71 @@
+﻿<div>
+    <form name="UpazilaInfoForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Upazila Info" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" class="form-control" id="UpazilaId" ng-model="UpazilaInfoModel.UpazilaId"
+                                       title="Upazila Id" placeholder="Upazila Id" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="UpazilaNm" ng-model="UpazilaInfoModel.UpazilaNm"
+                                       validation-only-alphabets="true" title="Upazila Name" placeholder="Upazila Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="UpazilaShortNm" title="Upazila Short Name"
+                                       validation-only-alphabets="true" ng-model="UpazilaInfoModel.UpazilaShortNm" 
+                                       placeholder="Upazila Short Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="UpazilaInfoModel.DistrictId"
+                                           placeholder="Select District"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DistrictId">
+                                    <ui-select-match allow-clear="true" placeholder="Select District">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>    
+                        <br />
+                        <div class="input-group">
+                            <br />
+                            <button type="submit" class="btn btn-primary editable-table-button btn-xs" 
+                                    ng-disabled="UpazilaInfoForm.$invalid">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" 
+                                    ng-click="ClearFields()">Clear</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="UpazilaInfoTable" ba-panel ba-panel-title="Upazila Info Table" ba-panel-class="with-scroll" 
+                     ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/UpazilaInfo/UpazilaInfoTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

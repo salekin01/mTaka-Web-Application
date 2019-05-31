@@ -1,0 +1,130 @@
+﻿<div>
+    <form name="ReportConfigMasterForm" class="form-inline" ng-submit="addData();" novalidate>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Report Configuration" ba-panel-class="with-scroll">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="FunctionId">Function Id</label>
+                                <!--<input type="text" class="form-control" id="FunctionId" ng-model="ReportMasterModel.FunctionId" placeholder="Function Id">-->
+                                <div class="input-group">
+                                    <ui-select ng-model="ReportMasterModel.FunctionId"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               id="FunctionId"
+                                               title="Select Provider"
+                                               on-select="onSelected($item)"
+                                               required>
+                                        <ui-select-match allow-clear="true" placeholder="Select Provider">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in FunctionIdForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="ReportName">Report Name</label>
+                                <input type="text" class="form-control" id="ReportName" ng-model="ReportMasterModel.ReportName" title="Report Name" placeholder="Report Name"
+                                       validation-field-required="true"
+                                       validation-only-alphabets="true"
+                                       required />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="ReportFile">File Name</label>
+                                <input type="text" class="form-control" id="ReportFile" ng-model="ReportMasterModel.ReportFile" title="File Name" placeholder="Report File Name"
+                                       validation-field-required="true"
+                                       required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="LookatFile">Select File</label>
+                                <input type="file" class="form-control" id="LookatFile"  title="Browse File" placeholder="Browse File" />
+                              
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <label for="ConnectionId">Connection Id</label>
+                                <ui-select ng-model="ReportMasterModel.ConnectionId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ConnectionId"
+                                           required>
+                                    <ui-select-match placeholder="Select With Search">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ConnectionForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="IsVisible">Visible</label><br />
+                                <ba-switcher switcher-style="primary" id="IsVisible" switcher-value="ReportMasterModel.IsVisible" ng-model="ReportMasterModel.IsVisible"></ba-switcher>
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="GenBeforeEod">Genarate Before EOD</label><br />
+                                <ba-switcher switcher-style="primary" id="GenBeforeEod" switcher-value="ReportMasterModel.GenBeforeEod" ng-model="ReportMasterModel.GenBefEOD"> </ba-switcher>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="AutoGenPeriod">Genrate After EOD</label><br />
+                                <ba-switcher switcher-style="primary" id="AutoGenPeriod" switcher-value="ReportMasterModel.AutoGenPeriod" ng-model="ReportMasterModel.AutoGenPeriod"> </ba-switcher>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <div class="input-group" ng-if="SubmitBtn==='Add'">
+                    <br />
+                    <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ReportConfigMasterForm.$invalid">{{SubmitBtn}}</button>
+                    <span> </span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs"  ng-click="ClearFields()">Clear</button>
+                </div>
+                <div class="input-group" ng-if="SubmitBtn==='Update'">
+                    <br />
+
+                    <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ReportConfigMasterForm.$invalid">{{SubmitBtn}}</button>
+                    <span> </span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="ConfigMasterTable" ba-panel ba-panel-title="Report Configuration Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/ReportConfigMaster/ConfigMasterTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

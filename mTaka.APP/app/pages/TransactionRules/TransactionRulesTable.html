@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Id</td>
+            <td>Account Type 1</td>
+            <td>Account Type 2</td>
+            <td>Service Type</td>
+            <td>Commission</td>
+            <td>Tranaction</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in TransactionRulesList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.TransactionRuleId}} </span></td>
+            <td><span> {{item.AccountType1Nm}} </span></td>
+            <td><span> {{item.AccountType2Nm}} </span></td>
+            <td><span> {{item.DefineServiceNm}} </span></td>
+            <td>
+                <span ng-if="item.commissionAllowed == '1'">
+                    <i class="ion-checkmark-round"></i>
+                </span>
+                <span ng-if="item.commissionAllowed == '0'">
+                    <i class="ion-close-round"></i>
+                </span>
+            </td>
+            <td>
+                <span ng-if="item.TranactionAllowed == '1'">
+                    <i class="ion-checkmark-round"></i>
+                </span>
+                <span ng-if="item.TranactionAllowed == '0'">
+                    <i class="ion-close-round"></i>
+                </span>
+            </td>
+            <!--<td><span>  {{item.TranactionAllowed == 1 ? 'Allowed' : 'Not Allowed'}} </span></td>-->
+            <!--<td><span>
+        <ba-switcher switcher-style="primary" switcher-value="TransactionRulesModel.s1">
+            </ba-switcher>
+        </span>
+    </td>
+    <td><span>
+        <ba-switcher switcher-style="primary" switcher-value="TransactionRulesModel.s2">
+            </ba-switcher>
+        </span>
+    </td>-->
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeTransactionRules($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteTransactionRules($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

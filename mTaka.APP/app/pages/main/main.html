@@ -1,0 +1,203 @@
+﻿<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 80%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+    </style>
+</head>
+
+<dashboard-pie-chart>
+    <div class="row pie-charts">
+        <div class="pie-chart-item-container" ng-repeat="chart in charts">
+            <div ba-panel>
+                <div class="pie-chart-item">
+                    <div class="chart" rel="{{ ::chart.color }}" data-percent="60"> <span class="percent"></span> </div>
+                    <div class="description">
+                        <div>{{ ::chart.description }}</div>
+                        <div class="description-stats">{{ ::chart.stats }}</div>
+                    </div>
+                    <i class="chart-icon i-{{ ::chart.icon }}"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</dashboard-pie-chart>
+<div class="row">
+    <div class="col-lg-6 col-md-12 col-sm-12"
+         ba-panel
+         ba-panel-title="Utility Service Bill Through Agents"
+         ba-panel-class="medium-panel traffic-panel">
+        <traffic-chart>
+            <div class="channels-block" ng-class="{'transparent': transparent}">
+                <div class="chart-bg"></div>
+                <div class="traffic-chart" id="trafficChart">
+                    <div class="canvas-holder">
+                        <canvas id="chart-area" width="280" height="280"></canvas>
+                        <div class="traffic-text">
+                            Collected Total<br> Utility Bill
+                            <!--<div class="input-group"><input class="form-control" id="TotalUsb" ng-model="MainModel.TotalUsb" /></div>-->
+                            <span>৳ {{TotalUsb}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="channels-info">
+                    <div>
+                        <div class="channels-info-item" ng-repeat="label in doughnutData.labels"
+                             ng-init="i = $index; data = doughnutData.datasets[0]">
+
+                            <div class="legend-color" style="background-color: {{::data.backgroundColor[i]}}"></div>
+                            <p>{{::label}}<span class="channel-number">{{data.percentage[i]}}</span></p>
+                            <div class="progress progress-sm channel-progress">
+                                <div class="progress-bar " role="progressbar"
+                                     aria-valuenow="{{data.percentage[i]}}" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: {{item.percentage}}%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </traffic-chart>
+    </div>
+    <!--<div class="col-lg-6 col-md-12 col-sm-12"
+         ba-panel
+         ba-panel-title="Most Collected Area"
+         ba-panel-class="medium-panel">
+        <dashboard-map>
+            <div id="map" style="width:100%;height:90%;"></div>
+            <script>
+                function myMap() {
+                    debugger;
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 3,
+                        center: { lat: 23.684994, lng: 90.356331 }
+                    });
+
+                    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    var markers = locations.map(function (location, i) {
+                        return new google.maps.Marker({
+                            position: location,
+                            label: labels[i % labels.length]
+                        });
+
+                    });
+                    debugger;
+                    var markerCluster = new MarkerClusterer(map, markers,
+                        { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+                }
+                var locations = [
+                    { lat: 23.810332, lng: 90.4125181 },
+                    { lat: 23.7924961, lng: 90.4042719 },
+                    { lat: 23.810332, lng: 90.4078058 },
+                    { lat: 23.8223486, lng: 90.3654204 },
+                    { lat: 23.7464653, lng: 90.3760125 },
+                    { lat: 23.7658444, lng: 90.3583606 },
+                    { lat: 23.7329724, lng: 90.417231 },
+                    { lat: 23.8758547, lng: 90.3795438 },
+                    { lat: 23.82597, lng: 90.3663552 },
+                    { lat: 23.8434344, lng: 90.4029252 }
+                ]
+
+            </script>
+
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu3MOVI4ADBzXTcRIqdxg0wohdgUND57A&callback=myMap">
+            </script>
+        </dashboard-map>
+    </div>-->
+    <div class="col-lg-6 col-md-12 col-sm-12"
+         ba-panel
+         ba-panel-title="Utility Service Bill Through Customers"
+         ba-panel-class="medium-panel traffic-panel">
+        <traffic-chart>
+            <div class="channels-block" ng-class="{'transparent': transparent}">
+                <div class="chart-bg"></div>
+                <div class="traffic-chart" id="trafficChart">
+                    <div class="canvas-holder">
+                        <canvas id="chart-area" width="280" height="280"></canvas>
+                        <div class="traffic-text">
+                            Collected Total<br> Utility Bill
+                            <!--<div class="input-group"><input class="form-control" id="TotalUsb" ng-model="MainModel.TotalUsb" /></div>-->
+                            <span>৳ {{TotalUsb}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="channels-info">
+                    <div>
+                        <div class="channels-info-item" ng-repeat="label in doughnutData.labels"
+                             ng-init="i = $index; data = doughnutData.datasets[0]">
+
+                            <div class="legend-color" style="background-color: {{::data.backgroundColor[i]}}"></div>
+                            <p>{{::label}}<span class="channel-number">{{data.percentage[i]}}</span></p>
+                            <div class="progress progress-sm channel-progress">
+                                <div class="progress-bar " role="progressbar"
+                                     aria-valuenow="{{data.percentage[i]}}" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: {{item.percentage}}%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </traffic-chart>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12"
+         ba-panel
+         ba-panel-title="Statistic of MFS">
+        <table class="table table-bordered">
+            <tr class="primary" style="font-size:large;height:30px">
+                <td style="width:50%">Product Name</td>
+                <td class="">Number Of Transaction</td>
+                <td class="">Amount Of Transaction</td>
+            </tr>
+            <tr class="" style="font-size:medium;height:50px">
+                <td style="width:50%">Inward Remittance</td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr class="" style="font-size:medium;height:50px">
+                <td style="width:50%">Talktime Topup(P2B) Agents</td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr class="" style="font-size:medium;height:50px">
+                <td style="width:50%">Talktime Topup(P2B) Customers</td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr class="" style="font-size:medium;height:50px">
+                <td style="width:50%">DPS Payment (P2B)</td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr class="" style="font-size:medium;height:50px">
+                <td style="width:50%">Merchant Payment</td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+            <tr class="" style="font-size:medium;height:50px">
+                <td style="width:50%">Tuition Fees Payment(P2B)</td>
+                <td class=""></td>
+                <td class=""></td>
+            </tr>
+        </table>
+    </div>
+
+</div>

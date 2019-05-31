@@ -1,0 +1,32 @@
+﻿
+<table class="table table-bordered table-hover table-condensed">
+
+    <tr>
+        <td>#</td>
+        <td>Manager Type ID</td>
+        <td>Manager Type Name</td>
+        <td>Short Name</td>
+        <td>Manager Category</td>
+        <td>Parent Account</td>
+        <td>Action</td>
+    </tr>
+
+
+    <tr ng-repeat="item in ManagerType ">
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.ManTypeId}} </span></td>
+        <td><span> {{item.ManTypeNm}} </span></td>
+        <td><span> {{item.ManTypeShortNm}} </span></td>
+        <td><span> {{item.ManagerCategoryNm}} </span></td>
+        <td><span> {{item.ManTypeParentAcc}} </span></td>
+        <td>
+            <span>
+                <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeManagerType($index)">Change</button>
+
+                <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteManagerType($index)">Delete</button>
+            </span>
+        </td>
+
+    </tr>
+
+</table>

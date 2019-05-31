@@ -1,0 +1,53 @@
+﻿
+<div class="col-md-4">
+    <div class="input-group">
+        <input type="text" class="form-control" id="WalletAccountNo" ng-model="AccInfoModel.WalletAccountNo"
+                placeholder="Wallet Account No"
+                ng-disabled="true"
+                validation-field-required="true"
+                validation-only-alphabets="{message:'Please Enter Account No  (Only A-Z)', value: true}">
+    </div>
+</div>
+<div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" id="AccNm" ng-model="AccInfoModel.AccNm"
+                    placeholder="Account Name"
+                    ng-disabled="true"
+                    validation-field-required="true"
+                    validation-only-alphabets="{message:'Please Enter Account Name  (Only A-Z)', value: true}">
+        </div>
+</div>
+<div class="col-md-4">
+    <div class="input-group">
+        <input type="text" class="form-control" id="AccType" ng-model="AccInfoModel.AccType"
+                placeholder="Account Type"
+                ng-disabled="true"
+                validation-field-required="true"
+                validation-only-alphabets="{message:'Please Enter Account Name  (Only A-Z)', value: true}">
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="input-group">
+        <input type="text" class="form-control" id="ManNationalId" ng-model="AccInfoModel.ManNationalId"
+                placeholder="User's NID"
+                ng-disabled="true"
+                validation-field-required="true"
+                validation-only-alphabets="{message:'Please Enter Account Name  (Only A-Z)', value: true}">
+    </div>
+</div>
+<div class="col-md-4">
+    <span ng-if="AccInfoModel.AccountStatusId == '001'">
+        <i class="ion-checkmark-round"></i>
+    </span>
+    <span ng-if="AccInfoModel.AccountStatusId == '002'">
+        <i class="ion-close-round"></i>
+    </span>
+</div>
+<div class="col-md-12">
+    <div class="input-group">
+        <br />
+        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="BtnUpdate()">Update</button>
+        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearField()">Clear</button>
+    </div>
+</div>

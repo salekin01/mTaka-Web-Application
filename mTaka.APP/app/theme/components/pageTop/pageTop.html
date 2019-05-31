@@ -1,0 +1,111 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="../../../../Content/w3.css" rel="stylesheet" />
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 350px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+        background-color: #354753;
+    }
+
+    .title {
+        color: grey;
+        font-size: 18px;
+    }
+
+    button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    p {
+        color: white;
+    }
+
+    button:hover, a:hover {
+        opacity: 0.7;
+    }
+    #SessioncCard {
+        width: 50px;
+        height: 20px;
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+        /*background-color:darkseagreen;*/
+    }
+</style>
+<div class="page-top clearfix" scroll-position="scrolled" max-height="50" ng-class="{'scrolled': scrolled}">
+    <a href="#/main" class="al-logo clearfix"><span>m</span>Taka</a>
+    <a href="#" class="collapse-menu-link ion-navicon" ba-sidebar-toggle-menu></a>
+
+    <div class="search" align="right">
+        <p>{{UserName}}<br>
+         {{UserProfileModel.WalletAccountNo}}</p>
+        <!--<i class="ion-ios-search-strong" ng-click="startSearch()"></i>
+    <input id="searchInput" type="text" placeholder="Search for...">-->
+    </div>
+
+    <div class="user-profile clearfix">
+        <div class="al-user-profile" uib-dropdown>
+            <a uib-dropdown-toggle class="profile-toggle-link">
+                <img ng-src="../../../assets/pictures/{{propic}}">
+            </a>
+            <ul class="top-dropdown-menu profile-dropdown" uib-dropdown-menu>
+                <li><i class="dropdown-arr"></i></li>
+                <li><a href="" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-user"></i>Profile</a></li>
+                <li><a href=""><i class="fa fa-cog"></i>Settings</a></li>
+                <li><a href="../../../#/Dashboard"><i class="fa fa-cog"></i>Dashboard</a></li>
+                <li><a href="" class="signout" ng-click="$pageTopController.Logout()"><i class="fa fa-power-off"></i>Sign out</a></li>
+            </ul>
+        </div>
+        <div class="">
+            <div id="id01" class="w3-modal">
+                <div class="CardBody">
+                    <!--<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>-->
+                    <div class="card">
+                        <button type="button" class="btn btn-danger editable-table-button btn-xs" onclick="document.getElementById('id01').style.display='none'" style="float: right;">X</button>
+                        <img src="../../../assets/pictures/{{propic}}" alt="Avatar" class="avatar" style="width:80%; margin:10%"/>
+                        <h1>{{UserProfileModel.UserName}}</h1>
+                        <h3>{{UserProfileModel.AccTypeNm}}</h3>
+                        <p>{{UserProfileModel.DOB | date:'MMMM dd, yyyy'}}</p>
+                        <p>{{UserProfileModel.Occupation}}</p>
+                        <p>{{UserProfileModel.WalletAccountNo}}</p>
+                        <p>{{UserProfileModel.PresentAddress1}}</p>
+                        <div style="margin: 24px 0;">
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </div>
+                        <p><a href="http://localhost:50112/#/UserProfile" onclick="document.getElementById('id01').style.display='none'">Edit</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <msg-center></msg-center>
+    </div>
+</div>
+
+<!--<div ng-show="countdown<=10" id="SessioncCard">
+    <div align="center">
+        <h3>You're Idle. Do Something!</h3>
+    </div>
+    <div idle-countdown="countdown" ng-init="countdown=11">
+        <uib-progressbar max="5" value="5" animate="true" class="progress-striped active">You'll be logged out in {{countdown}} second(s).</uib-progressbar>
+    </div>
+</div>-->

@@ -1,0 +1,30 @@
+﻿<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Id</td>
+            <td>Offers Name</td>
+            <td>Customer</td>
+            <td>Service</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in SpecialOfferList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.OfferId}} </span></td>
+            <td><span> {{item.OfferName}} </span></td>
+            <td><span> {{item.AccTypeNm}} </span></td>
+            <td><span> {{item.DefineServiceNm}} </span></td>
+            <td>
+                <!--<span>
+            <button type="button" class="btn btn-default editable-table-button btn-xs" ng-click">View</button>
+        </span>-->
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeSpecialOffer($index)">Change</button>
+                </span>
+                <span>
+                    <button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteSpecialOffer($index)">Delete</button>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>

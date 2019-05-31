@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Type Id</td>
+            <td>Type Name</td>
+            <td>Short Name</td>
+            <td>Category Name</td>
+            <td>Parent Name</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in AccTypeList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.AccTypeId}} </span></td>
+            <td><span> {{item.AccTypeNm}} </span></td>
+            <td><span> {{item.AccTypeShortNm}} </span></td>
+            <td><span> {{item.AccCategoryNm}} </span></td>
+            <td><span> {{item.AccTypeParentAcc}} </span></td>
+            <td>
+                <span>
+                    <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeAccType($index)">Change</button>
+                    <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteAccType($index)">Delete</button>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

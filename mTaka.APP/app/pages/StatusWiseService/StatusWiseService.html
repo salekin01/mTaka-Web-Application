@@ -1,0 +1,73 @@
+﻿<div>
+    <form name="StatusWiseServiceForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Status Wise Service" ba-panel-class="with-scroll">                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" class="form-control" id="StatusWiseServiceId" ng-model="StatusWiseServiceModel.StatusWiseServiceId" title="Status Wise Service Id"
+                                       placeholder="Status Wise Service Id" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="StatusWiseServiceModel.DefineServiceId"
+                                           title="Select Define Service"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DefineServiceId"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Define Service">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DefineServiceForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="StatusWiseServiceModel.AccStatusSetupId"
+                                           title="Select Account Status"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="AccStatusSetupId"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Account Status">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in AccStatusSetupForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" 
+                                ng-disabled="StatusWiseServiceForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="StatusWiseService" ba-panel ba-panel-title="Status Wise Service Table" ba-panel-class="with-scroll" 
+                     ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/StatusWiseService/StatusWiseServiceTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

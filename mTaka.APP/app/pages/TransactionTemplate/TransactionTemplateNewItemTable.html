@@ -1,0 +1,34 @@
+﻿
+<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <td>#</td>
+        <td>Transaction Template Id</td>
+        <td>Define Service</td>
+        <td>Source of Account</td>
+        <td>Type of Account</td>
+        <td>Account Type</td>
+        <td>GL Account SL</td>
+        <td>Debit Or Credit</td>
+        <td>Narration</td>
+        <!--<td>Charge Rule</td>-->
+        <td>Action</td>
+    </tr>
+    <tr ng-repeat="item in ListTransactionTemplate">
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.TransactionTemplateId}} </span></td>
+        <td><span> {{item.DefineServiceId.Text}} </span></td>
+        <td><span> {{item.SourceofAccountId.Text}} </span></td>
+        <td><span> {{item.TypeofAccountId.Text}} </span></td>
+        <td><span> {{item.AccountTypeId.Text}} </span></td>
+        <td><span> {{item.GLAccSl}} </span></td>
+        <td><span> {{item.DebitOrCredit.Text}} </span></td>
+        <td><span> {{item.Narration}} </span></td>
+        <!--<td><span> {{item.ChargeRuleName}} </span></td>-->
+        <td>
+            <span>
+                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="deleteItem($index)">Delete</button>
+                <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteTransactionTemplate($index)">Delete</button>-->
+            </span>
+        </td>
+    </tr>
+</table>

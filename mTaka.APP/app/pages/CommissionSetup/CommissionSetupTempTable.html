@@ -1,0 +1,22 @@
+﻿
+<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <td>#</td>
+        <td>Account Type</td>
+        <td>Commission Rate</td>
+        <td>Advance Income Tax</td>
+        <td>Action</td>
+    </tr>
+    <tr ng-repeat="item in ListCommissionSetup">
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.AccTypeId.Text}} </span></td>
+        <td><span> {{item.CommissionRate}} </span></td>
+        <td><span> {{item.AIT}} </span></td>
+        <td>
+            <span>
+                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="deleteItem($index)">Delete</button>
+                <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteTransactionTemplate($index)">Delete</button>-->
+            </span>
+        </td>
+    </tr>
+</table>

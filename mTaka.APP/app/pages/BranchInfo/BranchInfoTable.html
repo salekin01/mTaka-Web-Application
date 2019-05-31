@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Branch Id</td>
+            <td>Branch Name</td>
+            <td>Branch Short Name</td>
+            <td>Currency</td>
+            <td>Address 1</td>
+            <td>Address 2</td>
+            <!--<td>City</td>
+            <td>District</td>
+            <td>Division</td>-->
+            <td>Country</td>
+            <td>Police Station</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in BranchInfoList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.BranchId}} </span></td>
+            <td><span> {{item.BranchNm}} </span></td>
+            <td><span> {{item.BranchShortNm}} </span></td>
+            <td><span> {{item.CurrencyNm}} </span></td>
+            <td><span> {{item.Address1}} </span></td>
+            <td><span> {{item.Address2}} </span></td>
+            <!--<td><span> {{item.CityNm}} </span></td>
+            <td><span> {{item.DistrictNm}} </span></td>
+            <td><span> {{item.DivisionNm}} </span></td>-->
+            <td><span> {{item.CountryNm}} </span></td>
+            <td><span> {{item.PoliceStationNm}} </span></td>
+            <td><span> {{item.Phone}} </span></td>
+            <td><span> {{item.Email}} </span></td>
+            <td>
+                <span>
+                    <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeBranchInfo($index)">Change</button>
+                    <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteBranchInfo($index)">Delete</button>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

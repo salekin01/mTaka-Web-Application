@@ -1,0 +1,73 @@
+﻿<div>
+    <form name="CashInForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Cash In" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" title="Cash In Id" class="form-control" id="SerialId" ng-model="CashInModel.SerialId" placeholder="Cash In Id" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <input type="text" title="From Account No." class="form-control" id="FromSystemAccountNo"
+                                       ng-model="CashInModel.FromSystemAccountNo" placeholder="From Account No."
+                                       validation-no-space="true" validation-only-numbers="true" ng-disabled="true" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <input type="text" title="From Account Balance" class="form-control" id="FromAccountBalance"
+                                       ng-model="CashInModel.FromAccountBalance" placeholder="From Account Balance"
+                                       validation-no-space="true" validation-only-numbers="true" ng-disabled="true" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="To Account No." class="form-control TextRequiredField" id="ToSystemAccountNo"
+                                       ng-model="CashInModel.ToSystemAccountNo" placeholder="To Account No." validation-no-space="true"
+                                       validation-only-numbers="true" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Amount" class="form-control TextRequiredField" id="Amount" ng-model="CashInModel.Amount"
+                                       validation-no-space="true" validation-only-numbers="true" placeholder="Amount" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Narration" class="form-control TextRequiredField" id="Narration" ng-model="CashInModel.Narration"
+                                       placeholder="Narration" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Number of Cash In" class="form-control" id="NumberCashIn" ng-model="CashInModel.NumberOfCashIn"
+                                       placeholder="Number of Cash In">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="CashInForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </form>    
+</div>

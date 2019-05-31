@@ -1,0 +1,70 @@
+﻿<div>
+    <form name="Organogram" class="form-inline" ng-submit="fetchData();" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Organogram Search" ba-panel-class="with-scroll">
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="OrganogramModel.Title"
+                                           title="Select Top User"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="TypeID">
+                                    <ui-select-match allow-clear="true" placeholder="Select User Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in OrganogramForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group" ng-show="OrganogramModel.Title.Value == 'M'">
+                                <input type="text" title="OrganogramTop" class="form-control" id="UserName"
+                                       ng-model="OrganogramModel.FirstName"
+                                       placeholder="User Name" required>
+                            </div>
+                            <div class="input-group" ng-show="OrganogramModel.Title.Value == 'D'">
+                                <input type="text" title="No" class="form-control" id="HomePhone"
+                                       ng-model="OrganogramModel.HomePhone"
+                                       placeholder="Wallect Account No." required>
+                            </div>
+                            <div class="input-group" ng-show="OrganogramModel.Title.Value == 'C'">
+                                <input type="text" title="No" class="form-control" id="HomePhone"
+                                       ng-model="OrganogramModel.HomePhone"
+                                       placeholder="Wallect Account No." required>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+                    
+                    <div class="input-group" style="padding-left:15px;">                      
+
+                        <div class="input-group" ng-if="SubmitBtn==='Search'">
+                            <br />
+                            <button type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="OrganogramMap" ba-panel ba-panel-title="Organogram Info Map" ba-panel-class="with-scroll">
+                    <div include-with-scope="../../app/pages/Organogram/OrganogramMap.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

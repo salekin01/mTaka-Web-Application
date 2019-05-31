@@ -1,0 +1,549 @@
+﻿<div>
+    <form name="ChargeRuleForm" class="form-inline" ng-submit="addData();" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Charge Rule" ba-panel-class="with-scroll">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="ChargeRuleId" ng-model="ChargeRuleModel.ChargeRuleId" placeholder="[Auto]" ng-disabled="true">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="ChargeRuleName" ng-model="ChargeRuleModel.ChargeRuleName" title="Charge Rule Name" placeholder="Rule Name"
+                                       validation-field-required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <ba-switcher switcher-style="primary" id="ChargeOndemandFlag" switcher-value="ChargeRuleModel.ChargeOndemandFlag" ng-model="ReportMasterModel.ChargeOndemandFlag"> </ba-switcher>
+                                <label for="ChargeOndemandFlag">On-Demand Charge Process Allowed</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.ChargeCtgLogId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ChargeCtgLogId">
+                                    <ui-select-match placeholder="Select Charge Category">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ChargesCategoryForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.ChargeRuleTypeId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ChargeRuleTypeId">
+                                    <ui-select-match placeholder="Select Charge Rule Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ChargeRuleTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <ba-switcher switcher-style="primary" id="CustomerFilterAppFlag" switcher-value="ChargeRuleModel.CustomerFilterAppFlag" ng-model="ReportMasterModel.CustomerFilterAppFlag"> </ba-switcher>
+                                <label for="CustomerFilterAppFlag">Apply Customer Filter Criteria</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.RateMethodId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="RateMethodId">
+                                    <ui-select-match placeholder="Select Charge Rate Method">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ChargeRateMethodForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="RatePrdNo" ng-model="ChargeRuleModel.RatePrdNo" title="Rate Period/Tenor" placeholder="Rate Period/Tenor" ng-disabled="ChargeRuleModel.RateMethodId.Value =='01'||ChargeRuleModel.RateMethodId.Value =='04'||ChargeRuleModel.RateMethodId.Value =='05'||ChargeRuleModel.RateMethodId.Value ==null">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.RatePrdId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="RatePrdId"
+                                           ng-hide="ChargeRuleModel.RateMethodId.Value =='01'||ChargeRuleModel.RateMethodId.Value =='04'||ChargeRuleModel.RateMethodId.Value =='05'||ChargeRuleModel.RateMethodId.Value ==null">
+                                    <ui-select-match placeholder="Select Rate Period">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in CalenderPeriodForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.RateTypeId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="RateTypeId">
+                                    <ui-select-match placeholder="Select Rate Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ChargeRateTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.DecRndId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DecRndId">
+                                    <ui-select-match placeholder="Select Decimal Rounding">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DecimalRoundingForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.GLAccSl"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="GLAccSl">
+                                    <ui-select-match placeholder="Select GL Account">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in GLAccForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group" ng-hide="ChargeRuleModel.RateTypeId.Value=='1'||ChargeRuleModel.RateTypeId.Value==''||ChargeRuleModel.RateTypeId.Value==null">
+                                <input type="text" class="form-control" id="RateAmount" ng-model="ChargeRuleModel.RateAmount" placeholder="Rate (Amount)">
+                            </div>
+                            <div class="input-group " ng-hide="ChargeRuleModel.RateTypeId.Value=='2'||ChargeRuleModel.RateTypeId.Value==''||ChargeRuleModel.RateTypeId.Value==null">
+                                <input type="text" class="form-control" id="RatePersent" ng-model="ChargeRuleModel.RatePersent" placeholder="Rate (%)">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" ng-hide="ChargeRuleModel.RateTypeId.Value=='2'||ChargeRuleModel.RateTypeId.Value==''||ChargeRuleModel.RateTypeId.Value==null">
+                            <div class="input-group ">
+                                <input type="text" class="form-control" id="MinAmount" ng-model="ChargeRuleModel.MinAmount" placeholder="Min Charge">
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-hide="ChargeRuleModel.RateTypeId.Value=='2'||ChargeRuleModel.RateTypeId.Value==''||ChargeRuleModel.RateTypeId.Value==null">
+                            <div class="input-group ">
+                                <input type="text" class="form-control" id="MaxAmount" ng-model="ChargeRuleModel.MaxAmount" placeholder="Max Charge">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </div>
+                    <!--<br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="GLAccSl" ng-model="ChargeRuleModel.GLAccSl" placeholder="GL Account SL" validation-field-required="true" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="GLAccNM" ng-model="ChargeRuleModel.GLAccNM" title="GL Account Name" >
+                            </div>
+                        </div>
+
+                    </div>-->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="ChargeRuleModel.DebitOrCredit"
+                                           title="Select Balance Type"
+                                           class="btn-group bootstrap-select form-control"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DebitOrCredit"
+                                           ng-disabled="false"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Debit or Credit">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DebitOrCreditForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="ChargeRuleModel.AccountTypeId"
+                                           title="Select Account Type"
+                                           class="btn-group bootstrap-select form-control"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="AccountTypeId"
+                                           ng-disabled="false"
+                                           >
+                                    <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="ChargeRuleModel.ChargeRuleTypeId.Value=='1'">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Event-Based Charge Rules" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.ChargeEventId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ChargeEventId">
+                                    <ui-select-match placeholder="Select Charge Event">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DefineServiceForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <ba-switcher switcher-style="primary" id="ChildChargeRuleFlag" switcher-value="ChargeRuleModel.ChildChargeRuleFlag" ng-model="ReportMasterModel.ChildChargeRuleFlag"> </ba-switcher>
+                                <label for="ChildChargeRuleFlag">Charge Depends on Another Charge Rule Execution</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <ba-switcher switcher-style="primary" id="ChargeActulaFlag" switcher-value="ChargeRuleModel.ChargeActulaFlag" ng-model="ReportMasterModel.ChargeActulaFlag"> </ba-switcher>
+                                <label for="ChargeActulaFlag">Apply Charge at Actual</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4" ng-show="ChargeRuleModel.ChildChargeRuleFlag ==true">
+                            <div class="input-group">
+                                <ui-select ng-model="ChargeRuleModel.ParentChargeRuleID"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ParentChargeRuleID">
+                                    <ui-select-match placeholder="Select Parent Charge Rule">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ChargeRuleForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-show="ChargeRuleModel.ChargeActulaFlag==true">
+                            <div class="input-group">
+                                <ui-select ng-model="ChargeRuleModel.ChargeActTypeId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ChargeActTypeId">
+                                    <ui-select-match placeholder="Select Charge at Actual Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ChargeActTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="ChargeRuleModel.CustomerFilterAppFlag ==true">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Charge Deduction Criteria" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.CustomerFilterAppId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="CustomerFilterAppId">
+                                    <ui-select-match placeholder="Select Customer Filter">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in CustomerFilterForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-show="ChargeRuleModel.CustomerFilterAppId.Value=='3'">
+                            <div class="input-group ">
+                                <ui-select ng-model="ChargeRuleModel.CusCatId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="CusCatId">
+                                    <ui-select-match placeholder="Select Customer Category">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in CusCategoryForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4" ng-show="ChargeRuleModel.CustomerFilterAppId.Value=='3'">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="AddItem()">Add Item</button>
+                                <span> </span>
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearAddItems()">Clear Items</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" ng-show="ListChargeRule.length > 0">
+                        <div class="col-md-8">
+                            <div class="input-group ">
+
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tr>
+                                        <td>#</td>
+                                        <td hidden>Customer Category Id</td>
+                                        <td>Customer Category</td>
+                                        <td>Action</td>
+                                    </tr>
+                                    <tr ng-repeat="item in ListChargeRule">
+                                        <td><span> {{$index + 1}} </span></td>
+                                        <td hidden><span> {{item.CusCatId}} </span></td>
+                                        <td><span> {{item.CusCategoryNm}} </span></td>
+                                        <td>
+                                            <span>
+                                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="deleteItem($index)">Delete</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="input-group" ng-if="SubmitBtn==='Add'">
+                        <br />
+                        <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ChargeRuleForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                    <div class="input-group" ng-if="SubmitBtn==='Update'">
+                        <br />
+
+                        <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ChargeRuleForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Charge Apply Date and Time" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <table class="table table-bordered table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <!--<th class="text-center">All Days</th>-->
+                                    <th class="text-center">Saturday</th>
+                                    <th class="text-center">Sunday</th>
+                                    <th class="text-center">Monday</th>
+                                    <th class="text-center">Tuesday</th>
+                                    <th class="text-center">Wednesday</th>
+                                    <th class="text-center">Thursday</th>
+                                    <th class="text-center">Friday</th>
+                                    <th class="text-center">From Hour</th>
+                                    <th class="text-center">To Hour</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="dt in ChargeDateTime">
+                                <tr class="text-center">
+                                    <!--<td>
+                                        <span ng-if="dt.AllDays == true">
+                                            <i class="ion-checkmark-round"></i>
+                                        </span>
+                                        <span ng-if="dt.AllDays == false">
+                                            <i class="ion-close-round"></i>
+                                        </span>
+                                    </td>-->
+                                    <td>
+                                        <span ng-if="dt.Saturday == true">
+                                            <i class="ion-checkmark-round"></i>
+                                        </span>
+                                        <span ng-if="dt.Saturday == false">
+                                            <i class="ion-close-round"></i>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span ng-if="dt.Sunday == true">
+                                            <i class="ion-checkmark-round"></i>
+                                        </span>
+                                        <span ng-if="dt.Sunday == false">
+                                            <i class="ion-close-round"></i>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span ng-if="dt.Monday == true">
+                                            <i class="ion-checkmark-round"></i>
+                                        </span>
+                                        <span ng-if="dt.Monday == false">
+                                            <i class="ion-close-round"></i>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span ng-if="dt.Tuesday == true">
+                                            <i class="ion-checkmark-round"></i>
+                                        </span>
+                                        <span ng-if="dt.Tuesday == false">
+                                            <i class="ion-close-round"></i>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span ng-if="dt.Wednesday == true">
+                                            <i class="ion-checkmark-round"></i>
+                                        </span>
+                                        <span ng-if="dt.Wednesday == false">
+                                            <i class="ion-close-round"></i>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span ng-if="dt.Thursday == true">
+                                            <i class="ion-checkmark-round"></i>
+                                        </span>
+                                        <span ng-if="dt.Thursday == false">
+                                            <i class="ion-close-round"></i>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span ng-if="dt.Friday == true">
+                                            <i class="ion-checkmark-round"></i>
+                                        </span>
+                                        <span ng-if="dt.Friday == false">
+                                            <i class="ion-close-round"></i>
+                                        </span>
+                                    </td>
+                                    <td>{{dt.FromHour| date:"hh:mm"}}</td>
+                                    <td>{{dt.ToHour| date:"hh:mm"}}</td>
+                                    <td><input type="button" class="form-control" ng-click="Remove($index)" value="Remove" /></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="text-center">
+                                    <!--<td><input type="checkbox"  ng-model="ChargeDateTimeModel.AllDays" ng-click="SelectAll()" /></td>-->
+                                    <td><input type="checkbox" ng-model="ChargeDateTimeModel.Saturday" /></td>
+                                    <td><input type="checkbox" ng-model="ChargeDateTimeModel.Sunday" /></td>
+                                    <td><input type="checkbox" ng-model="ChargeDateTimeModel.Monday" /></td>
+                                    <td><input type="checkbox" ng-model="ChargeDateTimeModel.Tuesday" /></td>
+                                    <td><input type="checkbox" ng-model="ChargeDateTimeModel.Wednesday" /></td>
+                                    <td><input type="checkbox" ng-model="ChargeDateTimeModel.Thursday" /></td>
+                                    <td><input type="checkbox" ng-model="ChargeDateTimeModel.Friday" /></td>
+                                    <td><input type="text" class="form-control" ng-model="ChargeDateTimeModel.FromHour" validation-min-length="5" validation-max-length="5" placeholder="HH:MM" /></td>
+                                    <td><input type="text" class="form-control" ng-model="ChargeDateTimeModel.ToHour" validation-min-length="5" validation-max-length="5" placeholder="HH:MM" /></td>
+                                    <td><input type="button" class="form-control" ng-click="Add()" value="Add" /></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="input-group" ng-if="SubmitBtn==='Add'">
+                        <br />
+                        <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ChargeRuleForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                    <div class="input-group" ng-if="SubmitBtn==='Update'">
+                        <br />
+
+                        <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ChargeRuleForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="ChargeRuleTable" ba-panel ba-panel-title="Charge Rule Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/ChargeRule/ChargeRuleTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

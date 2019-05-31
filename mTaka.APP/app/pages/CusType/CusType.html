@@ -1,0 +1,61 @@
+﻿<!--<div ng-controller="CusTypeCtrl as CusTypeCtrlVm">-->
+<div>
+    <form name="CusTypeForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Customer Type Setup" ba-panel-class="with-scroll">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <!--<label for="CusTypeId">Customer Type Id</label>-->
+                            <input type="text" title="Customer Type ID" class="form-control" id="CusTypeId" ng-model="CusTypeModel.CusTypeId" placeholder="Customer Type ID" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <!--<label for="CusTypeNm">Customer Type Name</label>-->
+                            <input type="text" title="Customer Type Name" class="form-control" id="CusTypeNm" ng-model="CusTypeModel.CusTypeNm" placeholder="Customer Type Name" required>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <!--<label for="CusCategory">Customer Category</label>-->
+                            <ui-select ng-model="CusTypeModel.CusCategoryId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="CusCategoryId"
+                                       title="Select Customer Category"
+                                       required>    
+                                <ui-select-match allow-clear="true" placeholder="Select Customer Category">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in CusCategoryForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="input-group" style="padding-left:15px;">
+                        <br />
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="CusTypeForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="CusTypeTable" ba-panel ba-panel-title="Customer Type Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/CusType/CusTypeTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+</div>

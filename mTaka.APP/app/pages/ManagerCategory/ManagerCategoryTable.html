@@ -1,0 +1,26 @@
+﻿
+<table class="table table-bordered table-hover table-condensed">
+
+    <tr>
+        <td>#</td>
+        <td>Manager Category ID</td>
+        <td>Manager Category Name</td>
+        <td>Action</td>
+    </tr>
+
+
+    <tr ng-repeat="item in ManagerCategoryList ">
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.ManagerCategoryId}} </span></td>
+        <td><span> {{item.ManagerCategoryNm}} </span></td>
+        <td>
+            <span>
+                <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeManagerCategory($index)">Change</button>
+
+                <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteManagerCategory($index)">Delete</button>
+            </span>
+        </td>
+
+    </tr>
+
+</table>

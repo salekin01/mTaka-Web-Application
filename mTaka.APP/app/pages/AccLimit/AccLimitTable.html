@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>Limit Id</td>
+            <td>Account Category</td>
+            <td>Account Type</td>
+            <td>DefineServiceId</td>
+            <td>No. Of Occurrence</td>
+            <td>Amount Of Occurrence</td>
+            <td>Amount Of total Occurrences</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in AcclimitList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.AccCategoryNm}} </span></td>
+            <td><span> {{item.AccountTypeNm}} </span></td>
+            <td><span> {{item.ServiceNm}} </span></td>
+            <td><span> {{item.NoOfOccurrence}} </span></td>
+            <td><span> {{item.AmountOfOccurrence}} </span></td>
+            <td><span> {{item.AmountOftotalOccurrences}} </span></td>
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeAccLimit($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteAccLimit($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

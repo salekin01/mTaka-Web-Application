@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Bank Id</td>
+            <td>Bank Name</td>
+            <td>ShortName</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in BankInfoList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.BankId}} </span></td>
+            <td><span> {{item.BankNM}} </span></td>
+            <td><span> {{item.BankShortNM}} </span></td>
+            <td>
+                <span>
+                    <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ChangeBank($index)">Change</button>
+                    <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="DeleteBank($index)">Delete</button>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

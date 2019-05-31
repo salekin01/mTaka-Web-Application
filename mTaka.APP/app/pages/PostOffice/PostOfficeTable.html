@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Post Office Id</td>
+            <td>Post Office Name</td>
+            <td>Post Office Short Name</td>
+            <td>Upazila</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in PostOfficeList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.PostOfficeId}} </span></td>
+            <td><span> {{item.PostOfficeNM}} </span></td>
+            <td><span> {{item.PostOfficeShortNM}} </span></td>
+            <td><span> {{item.UpazilaId}} </span></td>
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changePostOffice($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deletePostOffice($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

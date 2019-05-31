@@ -1,0 +1,26 @@
+﻿<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <td style="display:none;">#</td>
+        <td>SL</td>
+        <td>Error Method</td>
+        <td>Error Message</td>
+        <td>InnerException</td>
+        <td>StackTrace</td>
+        <td>Action</td>
+    </tr>
+    <tr ng-repeat="item in ErrorLogList">
+        <td style="display:none;"><span> {{$index + 1}} </span></td>
+        <td><span> {{item.SL}} </span></td>
+        <td><span> {{item.ErrorMethod}} </span></td>
+        <td><span> {{item.ErrorMessage}} </span></td>
+        <td><span> {{item.InnerException}} </span></td>
+        <td><span> {{item.StackTrace}} </span></td>
+        <td>
+            <span>
+                <button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteErrorLog($index)">Delete</button>
+            </span>
+        </td>
+    </tr>
+</table>
+
+

@@ -1,0 +1,228 @@
+﻿
+<form name="UtilityServiceBillSetupForm" class="form-inline" ng-submit="addData();">
+    <div class="widgets">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="" ba-panel-class="with-scroll">
+                    <!--<ba-wizard>-->
+                        <!--<ba-wizard-step title="GENERAL INFO" form="Info">-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--<div ba-panel ba-panel-title="Info" ba-panel-class="with-scroll">-->
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Provider ID" class="form-control" id="PvSL" ng-model="UtilityServiceBillSetupModel.PvSL" placeholder="Provider ID" ng-disabled="true">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="UtilityServiceBillSetupModel.PvId"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="PvId"
+                                                           title="Select Provider"
+                                                           required>
+                                                    <ui-select-match allow-clear="true" placeholder="Select Provider">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in ProviderForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4" ng-show="UtilityServiceBillSetupModel.PvId.Text=='Educational Payment'">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="InstituteName" ng-model="UtilityServiceBillSetupModel.InstituteName"
+                                                       placeholder="Institute Name"
+                                                       title="Institute Name"
+                                                       ng-disabled="false">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Provider Short Name" class="form-control" id="PvShortName" ng-model="UtilityServiceBillSetupModel.PvShortName" placeholder="Provider Short Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Address" class="form-control" id="PvAddress" ng-model="UtilityServiceBillSetupModel.PvAddress" placeholder="Address" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <input type="text" title="API Address" class="form-control" id="PvApiAddress" ng-model="UtilityServiceBillSetupModel.PvApiAddress" placeholder="API Address" required>
+                                            </div>
+                                        </div>
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        <!--</ba-wizard-step>-->
+
+                        <!--<ba-wizard-step title="OTHERS INFO" form="Info">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div ba-panel ba-panel-title="Others Info" ba-panel-class="with-scroll">
+
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Field Name" class="form-control" id="FieldName" ng-model="UtilityServiceBillSetupModel.FieldName" placeholder="Field Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="UtilityServiceBillSetupModel.InputType"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="InputType"
+                                                           title="Input Type">
+                                                    <ui-select-match allow-clear="true" placeholder="Input Type">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in InputTypeForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="UtilityServiceBillSetupModel.FieldType"
+                                                           title="Field Type"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="FieldType">
+                                                    <ui-select-match allow-clear="true" placeholder="Field Type">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in MonthlyBillForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Field Length" class="form-control" id="FieldLength" ng-model="UtilityServiceBillSetupModel.FieldLength" placeholder="Field Length" ng-disabled="false">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Prefix" class="form-control" id="FieldPrefix" ng-model="UtilityServiceBillSetupModel.FieldPrefix" placeholder="Prefix">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Suffix" class="form-control" id="FieldSuffix" ng-model="UtilityServiceBillSetupModel.FieldSuffix" placeholder="Suffix">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="User Assist" class="form-control" id="UserAssist" ng-model="UtilityServiceBillSetupModel.UserAssist" placeholder="User Assist">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="User Assist Length" class="form-control" id="UserAssistLength" ng-model="UtilityServiceBillSetupModel.UserAssistLength" placeholder="User Assist Length">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ba-panel ba-panel-title="Bill" ba-panel-class="with-scroll">
+                                        <br />
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="UtilityServiceBillSetupModel.BillingCodeType"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="BillingCodeType"
+                                                           title="Input Type For Bill Code"
+                                                           >
+                                                    <ui-select-match allow-clear="true" placeholder="Input Type For Bill Code">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in InputTypeForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Name For Bill Code" class="form-control" id="BillIDName" ng-model="UtilityServiceBillSetupModel.BillIDName" placeholder="Name For Bill Code">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="Bill Code Length" class="form-control" id="BillingCodeLength" ng-model="UtilityServiceBillSetupModel.BillingCodeLength" placeholder="Bill Code Length">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="User Assist" class="form-control" id="UserAssistForBill" ng-model="UtilityServiceBillSetupModel.UserAssistForBill" placeholder="User Assist">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" title="User Assist Length" class="form-control" id="UserAssistForBillLength" ng-model="UtilityServiceBillSetupModel.UserAssistForBillLength" placeholder="User Assist Length">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="UtilityServiceBillSetupModel.MonthlyBill"
+                                                           title="Monthly Bill"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="MonthlyBill"
+                                                           >
+                                                    <ui-select-match allow-clear="true" placeholder="Monthly Bill">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in MonthlyBillForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ba-wizard-step>-->
+
+                        <!--<ba-wizard-step title="Transaction Information">
+                            <div ba-panel ba-panel-title="Transaction Information" ba-panel-class="with-scroll"></div>
+                        </ba-wizard-step>-->
+                    <!--</ba-wizard>-->
+                    <div class="input-group">
+                        <br />
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="UtilityServiceBillSetupForm.$invalid">{{SubmitBtn}}</button>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="UtilityServiceBillSetupTable" ba-panel ba-panel-title="Provider Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                            <div include-with-scope="../../app/pages/UtilityServiceBillSetup/UtilityServiceBillSetupTable.html"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+
+

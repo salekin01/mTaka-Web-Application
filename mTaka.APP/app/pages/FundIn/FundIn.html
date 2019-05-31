@@ -1,0 +1,109 @@
+﻿<div>
+    <form name="FundInForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Fund In" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" title="Fund In Id" class="form-control" id="FundInId" ng-model="FundInModel.FundInId" placeholder="Fund In Id" ng-disabled="true">
+                            </div>
+                        </div> 
+                        <!--<div class="col-md-4">
+                            <div class="input-group">
+                                <ui-select ng-model="FundInModel.FromBranchId"
+                                           title="From Branch"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="FromBranchId">
+                                    <ui-select-match allow-clear="true" placeholder="Select With Search">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in BranchInfoForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>-->
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <input type="text" title="From Account No." class="form-control" id="FromSystemAccountNo"
+                                       ng-model="FundInModel.FromSystemAccountNo" placeholder="From Account No."
+                                       validation-no-space="true" validation-only-numbers="true" ng-disabled="true" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <input type="text" title="From Account Balance" class="form-control" id="FromAccountBalance"
+                                       ng-model="FundInModel.FromAccountBalance" placeholder="From Account Balance" ng-disabled="true"
+                                       validation-no-space="true" validation-only-numbers="true" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>                        
+                    </div>
+                    <br />
+                    <div class="row">
+                        <!--<div class="col-md-4">
+                            <div class="input-group">
+                                <ui-select ng-model="FundInModel.ToBranchId"
+                                           title="To Branch"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ToBranchId">
+                                    <ui-select-match allow-clear="true" placeholder="Select With Search">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in BranchInfoForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>--> 
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <!--<input type="text" class="form-control" id="ToSystemAccountNo" ng-model="FundInModel.ToSystemAccountNo" placeholder="To Account No." ng-change="GetLedgerMasterInfoByAgAccNo()" ng-model-options="{debounce: 5000}">-->
+                                <input type="text" title="To Account No." class="form-control TextRequiredField" id="ToSystemAccountNo"
+                                       ng-model="FundInModel.ToSystemAccountNo" placeholder="To Account No." validation-no-space="true"
+                                       validation-only-numbers="true" required>
+                                <!--ng-dblclick="GetLedgerMasterInfoByAgAccNo(FundInModel.ToSystemAccountNo)"--> 
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>                                             
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Amount" class="form-control TextRequiredField" id="Amount" ng-model="FundInModel.Amount"
+                                       validation-no-space="true" validation-only-numbers="true" placeholder="Amount" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Narration" class="form-control TextRequiredField" id="Narration" ng-model="FundInModel.Narration" 
+                                       placeholder="Narration" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div> 
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="FundInForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-md-12">
+                <div id="FundInTable" ba-panel ba-panel-title="Fund In Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/FundIn/FundInTable.html"></div>
+                </div>
+            </div>
+        </div>-->
+    </form>
+</div>

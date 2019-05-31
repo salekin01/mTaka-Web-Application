@@ -1,0 +1,24 @@
+﻿
+<table class="table table-bordered table-hover table-condensed">
+    <thead>
+        <tr align="center">
+            <td>Id</td>
+            <td>Process Name</td>
+            <td>Status</td>
+            <!--<td>Action</td>-->
+        </tr>
+
+    </thead>
+    <tbody ui:sortable ng:model="EODList" style="cursor: move;">
+        <tr ng-repeat="item in EODList" align="center">
+            <td><span> {{$index + 1}} </span></td>
+            <!--<td><span> {{item.EodId}} </span></td>-->
+            <td><span> {{item.EodName}} </span></td>
+            <td>
+                <span>
+                    <ba-switcher switcher-style="primary" id="commissionAllowed" switcher-value="TransactionRulesModel.commissionAllowed" ng-model="TransactionRulesModel.commissionAllowed"> </ba-switcher>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>

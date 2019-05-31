@@ -1,0 +1,57 @@
+﻿<div>
+    <form name="ReportForm" class="form-inline" ng-submit="viewReport();" novalidate>
+        <div ba-panel ba-panel-title="Reports" ba-panel-class="with-scroll">
+            <!--<div class="col-md-12">-->
+            <div class="col-md-4">
+                <div class="input-group">
+                    <ui-select ng-model="reportParameters.FunctionId"
+                               class="btn-group bootstrap-select form-control"
+                               ng-disabled="false"
+                               append-to-body="true"
+                               search-enabled="true"
+                               id="FunctionId"
+                               on-select="onSelected($item)"
+                               title="Select Provider"
+                               required>
+                        <ui-select-match allow-clear="true" placeholder="Select Provider">
+                            {{$select.selected.Text}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="withSearchItem in ProviderForDD | filter: $select.search">
+                            <span ng-bind-html="withSearchItem.Text"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <!--</div>-->
+        </div>
+
+
+        <!--<div class="panel panel-info">
+            <div class="panel-body ls-panel-body">
+                <div ng-repeat="input in formControls">
+                    <div compile ng-bind-html="input.htmlcode">
+                    </div>
+                </div>
+                <div compile ng-bind-html="reportParameters.formControlsHtml">
+                </div>
+            </div>
+        </div>-->
+        <div ba-panel ba-panel-title="Report Parameter" ba-panel-class="with-scroll">
+            <div class="col-md-12">
+                <div ng-repeat="input in formControls">
+                    <div compile ng-bind-html="input.htmlcode">
+                    </div>
+                </div>
+                <div compile ng-bind-html="reportParameters.formControlsHtml">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group" style="padding-left:30px;">
+            <br />
+            <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ReportForm.$invalid">{{SubmitBtn}}</button>
+            <span> </span>
+            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+        </div>
+    </form>
+</div>

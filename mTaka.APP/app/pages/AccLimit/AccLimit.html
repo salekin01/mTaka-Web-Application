@@ -1,0 +1,137 @@
+﻿<!--<div ng-controller="CusTypeCtrl as CusTypeCtrlVm">-->
+<div>
+    <form name="AccLimitForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Account Limit" ba-panel-class="with-scroll">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="AccLimitId" ng-model="AccLimitModel.AccLimitId" placeholder="Account Limit Id" ng-disabled="true">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <!--<div ng-controller="AccLimitCtrl">-->
+                            <div class="input-group">
+                                <label class="custom-checkbox nowrap">
+                                    <input type="checkbox" id="AllAccCategory" ng-model="AccLimitModel.AllAccCategory" value=" all group">
+                                    <span>All Account Category</span>
+                                </label>
+                            </div>
+                            <br />
+                            <div class="input-group ">
+                                <ui-select ng-model="AccLimitModel.AccCategoryId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="AccLimitModel.AllAccCategory == true"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="AccCategoryId"
+                                           title="Select Account Category">
+                                    <ui-select-match allow-clear="true" placeholder="Select Account Category">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in AccCategoryForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <!--</div>-->
+                            <br />
+                            <br />
+                            <!--<div ng-controller="AccLimitCtrl">-->
+                            <div class="input-group">
+                                <label class="custom-checkbox nowrap">
+                                    <input type="checkbox" id="AllAccType" ng-model="AccLimitModel.AllAccType" value=" all Type">
+                                    <span>All Account Type</span>
+                                </label>
+                            </div>
+                            <br />
+                            <div class="input-group ">
+                                <ui-select ng-model="AccLimitModel.AccTypeId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="AccLimitModel.AllAccType==true"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="AccTypeId"
+                                           title="Select Account Type">
+                                    <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <!--</div>-->
+                            <br />
+                            <br />
+                            <!--<div ng-controller="AccLimitCtrl">-->
+                            <div class="input-group">
+                                <label class="custom-checkbox nowrap">
+                                    <input type="checkbox" id="AllDefineService" ng-model="AccLimitModel.AllDefineService" value=" all Define Service">
+                                    <span>All Define Service</span>
+                                </label>
+                            </div>
+                            <br />
+                            <div class="input-group ">
+                                <ui-select ng-model="AccLimitModel.DefineServiceId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="AccLimitModel.AllDefineService==true"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DefineServiceId"
+                                           title="Select Define Service">
+                                    <ui-select-match allow-clear="true" placeholder="Select Define Service">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DefineServiceForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <!--</div>-->
+                        </div>
+                        <div class="col-md-6">
+                            <br />
+                            <br />
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="NoOfOccurrence" ng-model="AccLimitModel.NoOfOccurrence" placeholder="No. Of Occurrence" title="No. Of Occurrence">
+                            </div>
+                            <br />
+                            <br />
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="AmountOfOccurrence" ng-model="AccLimitModel.AmountOfOccurrence" placeholder="Amount Of Occurrence" title="Amount Of Occurrence">
+                            </div>
+                            <br />
+                            <br />
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="AmountOftotalOccurrences" ng-model="AccLimitModel.AmountOftotalOccurrences" placeholder="Amount Of Total Occurrence" title="Amount Of Total Occurrence">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <br />
+                                <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="AccLimitForm.$invalid">{{SubmitBtn}}</button>
+                                <span> </span>
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-disabled="AccLimitForm.$invalid" ng-click="ClearFields()">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div id="AccLimitTable" ba-panel ba-panel-title="Account Limit" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/AccLimit/AccLimitTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

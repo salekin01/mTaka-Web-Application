@@ -1,0 +1,41 @@
+﻿<div>
+    <form name="AccInfoForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="" ba-panel-class="with-scroll">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <ui-select ng-model="AccInfoModel.WalletAccountNoDD"
+                                       title="Select Account No."
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="WalletAccountNoDD">
+                                <ui-select-match allow-clear="true" placeholder="Select Account No.">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in AccNoForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding-left:15px;">
+                    <div class="input-group">
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="BtnSubmit()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div id="groupTable" ba-panel ba-panel-title="Account Details" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/AccInfo/AccInfoDetails.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,205 @@
+﻿<div>
+    <form name="ConfigParamForm" class="form-inline" ng-submit="addData();" novalidate>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Function Id" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <label for="ParameterDatatype">Report</label>
+                                <ui-select ng-model="ReportConfigParamModel.FunctionId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="FunctionId"
+                                           title="Select Function"
+                                           on-select="onSelected($item)"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Report">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ReportFunctionIdForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="Parameter">Parameter</label>
+                                <input type="text" class="form-control" id="Parameter" ng-model="ReportConfigParamModel.Parameter" placeholder="Parameter">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="ParameterName">Parameter Name</label>
+                                <input type="text" class="form-control" id="ParameterName" ng-model="ReportConfigParamModel.ParameterName" title="Parameter Name" placeholder="Parameter Name"
+                                       validation-field-required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="ParameterDatatype">Data Type</label>
+                                <input type="text" class="form-control" id="ParameterDatatype" ng-model="ReportConfigParamModel.ParameterDatatype" title="Data Type" placeholder="Data Type"
+                                       validation-field-required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="ParameterMaxlength">Max Length</label>
+                                <input type="text" class="form-control" id="Parameter" ng-model="ReportConfigParamModel.ParameterMaxlength" placeholder="Max Length">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="DefaultValue">Default Value</label>
+                                <ui-select ng-model="ReportConfigParamModel.DefaultValue"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DefaultValue"
+                                           title="Select Default Value">
+                                    <ui-select-match allow-clear="true" placeholder="Select Default Value">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DefaultValueForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="ParameterUserAsist">User Asist</label>
+                                <input type="text" class="form-control" id="ParameterUserAsist" ng-model="ReportConfigParamModel.ParameterUserAsist" title="User Asist"
+                                       placeholder="User Asist">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="IsMandatory">Mandatory</label><br />
+                                <ba-switcher switcher-style="primary" id="IsMandatory" switcher-value="ReportConfigParamModel.IsMandatory" ng-model="ReportConfigParamModel.IsMandatory"> </ba-switcher>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="ControlType">Control Type</label>
+                                <ui-select ng-model="ReportConfigParamModel.ControlType"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ControlType"
+                                           title="Select Control Type">
+                                    <ui-select-match allow-clear="true" placeholder="Select Control Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ControlTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <!--<div class="input-group">
+                                <label for="ControlType">Control Type</label>
+                                <input type="text" class="form-control" id="ControlType" ng-model="ReportConfigParamModel.ControlType" title="Control Type" placeholder="Control Type">
+                            </div>-->
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="ListSpName">List SP Name</label>
+                                <input type="text" class="form-control" id="ListSpName" ng-model="ReportConfigParamModel.ListSpName" title="SP Name"
+                                       placeholder="SP Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="IsReadonly">Readonly</label><br />
+                                <ba-switcher switcher-style="primary" id="IsReadonly" switcher-value="ReportConfigParamModel.IsReadonly" ng-model="ReportConfigParamModel.IsReadonly"> </ba-switcher>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="MinValue">Minimum Value</label>
+                                <input type="text" class="form-control" id="MinValue" ng-model="ReportConfigParamModel.MinValue" title="Minimum Value"
+                                       placeholder="Minimum Value">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="MaxValue">Maximum Value</label>
+                                <input type="text" class="form-control" id="MaxValue" ng-model="ReportConfigParamModel.MaxValue" placeholder="Maximum Value">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <label for="IsVisible">Visible</label><br />
+                                <ba-switcher switcher-style="primary" id="IsVisible" switcher-value="ReportConfigParamModel.IsVisible" ng-model="ReportConfigParamModel.IsVisible"> </ba-switcher>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <div class="input-group" ng-if="SubmitBtn==='Add'">
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="AddItem()">Add Item</button>
+                                <span> </span>
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                            </div>
+                            <div class="input-group" ng-if="SubmitBtn==='Update'">
+                                <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ConfigParamForm.$invalid">{{SubmitBtn}}</button>
+                                <span> </span>
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="ConfigParamAddToList.length > 0">
+            <div class="col-md-12">
+                <div id="ConfigParamAddToList" ba-panel ba-panel-title="Added Items" ba-panel-class="with-scroll">
+                    <div class="input-group" include-with-scope="../../app/pages/ReportConfigParam/ConfigParamAddToList.html"></div>
+
+                    <br />
+                    <div class="input-group" ng-if="SubmitBtn==='Add'">
+                        <br />
+                        <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ConfigParamForm.$invalid">{{SubmitBtn}}</button>
+                        <!--<span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ConfigParamForm.$invalid" ng-click="ClearFields()">Clear</button>-->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="ConfigParamTable" ba-panel ba-panel-title="Report Configuration Param Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/ReportConfigParam/ConfigParamTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

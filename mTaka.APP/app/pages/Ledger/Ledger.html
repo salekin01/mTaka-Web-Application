@@ -1,0 +1,74 @@
+﻿<form name="LedgerForm" class="form-inline" ng-submit="addData();">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-class="with-scroll">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <p class="input-group">
+                            <input type="text"
+                                   id="FromDate" ng-model="LedgerModel.FromDate"
+                                   class="form-control"
+                                   title="From Date"
+                                   placeholder="From Date"
+                                   uib-datepicker-popup="dd/MM/yyyy"
+                                   is-open="dpOpenStatus.withRequired" />
+                            <span class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        ng-click="setDpOpenStatus('withRequired', $event)">
+                                    <i class="ion-ios-calendar-outline"></i>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <p class="input-group">
+                            <input type="text"
+                                   id="ToDate" ng-model="LedgerModel.ToDate"
+                                   class="form-control"
+                                   title="To Date"
+                                   placeholder="To Date"
+                                   uib-datepicker-popup="dd/MM/yyyy"
+                                   is-open="dpOpenStatus1.withRequired" />
+                            <span class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-default"
+                                        ng-click="setDpOpenStatus1('withRequired', $event)">
+                                    <i class="ion-ios-calendar-outline"></i>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" title="Wallet Account No." class="form-control" id="FromSystemAccountNo" ng-model="LedgerModel.WalletAccountNo"
+                               validation-no-space="true" validation-only-numbers="true" placeholder="Wallet Account No." required>
+                        <span class="help-block error-block basic-block">Required</span>
+                    </div>
+                </div>
+
+                <br />
+                <div class="input-group" style="padding-left:15px;">
+                    <br />
+                    <!--<button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="LedgerForm.$invalid">Search</button>-->
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-disabled="LedgerForm.$invalid" ng-click="GetAllLedgerTxnByAccNoandDate()">Search</button>
+                    <span> </span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                </div>
+
+                <div class="col-md-12">
+                    <br />
+                    <br />
+                    <div ba-panel ba-panel-title="Ledger Details" ba-panel-class="with-scroll" ng-init="loadData();">
+                        <div include-with-scope="../../app/pages/Ledger/LedgerTable.html"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

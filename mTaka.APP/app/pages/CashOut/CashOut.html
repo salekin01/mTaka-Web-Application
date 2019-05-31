@@ -1,0 +1,64 @@
+﻿<div>
+    <form name="CashOutForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Cash Out" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" title="Cash Out Id" class="form-control" id="CashOutId" ng-model="CashOutModel.CashOutId" placeholder="Cash Out Id" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <input type="text" title="From Account No." class="form-control" id="FromSystemAccountNo"
+                                       validation-no-space="true" validation-only-numbers="true" ng-disabled="true"
+                                       ng-model="CashOutModel.FromSystemAccountNo" placeholder="From Account No." required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <input type="text" title="From Account Balance" class="form-control" id="FromAccountBalance"
+                                       ng-model="CashOutModel.FromAccountBalance" placeholder="From Account Balance"
+                                       validation-no-space="true" validation-only-numbers="true" ng-disabled="true" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>                       
+                    </div>
+                    <br />
+                    <div class="row">                        
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="To Account No." class="form-control TextRequiredField" id="ToSystemAccountNo"
+                                       validation-no-space="true" validation-only-numbers="true" ng-model="CashOutModel.ToSystemAccountNo"
+                                       placeholder="To Account No." required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div> 
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Amount" class="form-control TextRequiredField" id="Amount" ng-model="CashOutModel.Amount"
+                                       validation-no-space="true" validation-only-numbers="true" placeholder="Amount" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>                       
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Narration" class="form-control TextRequiredField" id="Narration"
+                                       ng-model="CashOutModel.Narration" placeholder="Narration" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="CashOutForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

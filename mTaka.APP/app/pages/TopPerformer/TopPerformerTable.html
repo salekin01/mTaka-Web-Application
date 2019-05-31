@@ -1,0 +1,48 @@
+﻿<div class="col-md-6">
+    <div ba-panel ba-panel-title="Top 5" ba-panal-class="with-scroll">
+        <table class="table table-bordered table-hover table-condensed">
+            <tr>
+                <td>#</td>
+                <td>Account No</td>
+                <td>Amount</td>
+                <td>No of Transaction</td>
+                <td>Action</td>
+            </tr>
+            <tr ng-repeat="item in TopList">
+                <td><span> {{$index + 1}} </span></td>
+                <td><span> {{item.AccNo}} </span></td>
+                <td><span> {{item.Amount}} </span></td>
+                <td><span> {{item.AccCount}} </span></td>
+                <td>
+                    <span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeCusType($index)">View</button>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="col-md-6">
+    <div ba-panel ba-panel-title="Lowest 5" ba-panal-class="with-scroll">
+        <table class="table table-bordered table-hover table-condensed">
+            <tr>
+                <td>#</td>
+                <td>Account No</td>
+                <td>Amount</td>
+                <td>No of Transaction</td>
+                <td>Action</td>
+            </tr>
+            <tr ng-repeat="item in LowList">
+                <td><span> {{$index + 1}} </span></td>
+                <td><span> {{item.AccNo}} </span></td>
+                <td><span> {{item.Amount}} </span></td>
+                <td><span> {{item.AccCount}} </span></td>
+                <td>
+                    <span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeCusType($index)">View</button>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

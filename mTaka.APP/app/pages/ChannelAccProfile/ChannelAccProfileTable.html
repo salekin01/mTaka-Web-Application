@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Account Profile Id</td>
+            <td>Channel Member Name</td>
+            <td>Wallet Account No</td>
+            <!--<td>Account Category</td>-->
+            <!--<td>Account Type</td>
+            <td>Father's Name</td>
+            <td>Mother's Name</td>
+            <td>Date of Birth</td>
+            <td>Nationality Id</td>
+            <td>Gender</td>
+            <td>TAX Id No</td>
+            <td>Passport No</td>
+            <td>Present Address 1</td>
+            <td>Present Address 2</td>
+            <td>Country</td>-->
+            <!--<td>City</td>-->
+            <!--<td>District</td>-->
+            <!--<td>Police Station</td>-->
+            <!--<td>Area</td>-->
+            <!--<td>Phone No</td>
+            <td>Permanent Address 1</td>
+            <td>Permanent Address 2</td>
+            <td>Country</td>-->
+            <!--<td>District</td>
+            <td>Area</td>
+            <td>City</td>
+            <td>Police Station</td>
+            <td>Phone No</td>
+            <td>Branch</td>
+            <td>Bank</td>
+            <td>Bank Account No</td>
+            <td>Parent Account Type</td>
+            <td>Parent Channel Profile</td>-->
+            <!--<td>Company Name</td>
+            <td>Occupation</td>
+            <td>National Id No</td>
+            <td>Vat Registration No</td>
+            <td>Account Status Setup</td>
+            <td>Trade License No</td>-->
+            <!--<td>Manager Type</td>
+            <td>Manager Profile</td>-->
+            <!--<td>Auth. Status Id</td>
+            <td>Last Action</td>
+            <td>Last Update Date</td>
+            <td>Make By</td>
+            <td>Make Date</td>
+            <td>Trans Date</td>-->
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in ChannelAccProfileList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.AccountProfileId}} </span></td>
+            <td><span> {{item.UserName}} </span></td>
+            <td><span> {{item.WalletAccountNo}} </span></td>
+            <!--<td><span> {{item.AccountCategoryNm}} </span></td>-->
+            <!--<td><span> {{item.AccountTypeNm}} </span></td>         
+            <td><span> {{item.FatherNm}} </span></td>
+            <td><span> {{item.MotherNm}} </span></td>
+            <td><span> {{item.DateofBirth}} </span></td>
+            <td><span> {{item.NationalityId}} </span></td>
+            <td><span> {{item.Gender}} </span></td>
+            <td><span> {{item.TAXIdNo}} </span></td>
+            <td><span> {{item.PassportNo}} </span></td>
+            <td><span> {{item.PresentAddress1}} </span></td>
+            <td><span> {{item.PresentAddress2}} </span></td>
+            <td><span> {{item.PresentCountryNm}} </span></td>-->
+            <!--<td><span> {{item.PresentCityNm}} </span></td>-->
+            <!--<td><span> {{item.PresentDistrictNm}} </span></td>-->
+            <!--<td><span> {{item.PresentPoliceStationNm}} </span></td>-->
+            <!--<td><span> {{item.PresentAreaNm}} </span></td>-->
+            <!--<td><span> {{item.PresentPhoneNo}} </span></td>
+            <td><span> {{item.PermanentAddress1}} </span></td>
+            <td><span> {{item.PermanentAddress2}} </span></td>
+            <td><span> {{item.PermanentCountryNm}} </span></td>-->
+            <!--<td><span> {{item.PermanentCityNm}} </span></td>
+            <td><span> {{item.PermanentDistrictNm}} </span></td>
+            <td><span> {{item.PermanentPoliceStationNm}} </span></td>
+            <td><span> {{item.PermanentAreaNm}} </span></td>
+            <td><span> {{item.PermanentPhoneNo}} </span></td>
+            <td><span> {{item.BranchNm}} </span></td>
+            <td><span> {{item.BankNm}} </span></td>
+            <td><span> {{item.BankAccountNo}} </span></td>
+            <td><span> {{item.ParentAccountTypeNm}} </span></td>
+            <td><span> {{item.ParentChannelAccProfileNm}} </span></td>-->
+            <!--<td><span> {{item.CompanyNm}} </span></td>
+            <td><span> {{item.Occupation}} </span></td>
+            <td><span> {{item.NationalIdNo}} </span></td>
+            <td><span> {{item.VatRegistrationNo}} </span></td>
+            <td><span> {{item.AccountStatusName}} </span></td>
+            <td><span> {{item.TradeLicenseNo}} </span></td>-->
+            <!--<td><span> {{item.ManagerTypeNm}} </span></td>
+            <td><span> {{item.ManagerProfileNm}} </span></td>-->
+            <!--<td><span> {{item.AuthStatusId}} </span></td>
+            <td><span> {{item.LastAction}} </span></td>
+            <td><span> {{item.LastUpdateDT}} </span></td>
+            <td><span> {{item.MakeBy}} </span></td>
+            <td><span> {{item.MakeDT}} </span></td>
+            <td><span> {{item.TransDT}} </span></td>-->
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeChannelAccProfile($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteChannelAccProfile($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

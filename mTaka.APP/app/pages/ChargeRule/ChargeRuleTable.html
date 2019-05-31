@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Charge Rule Name</th>
+                <th>Charge Category</th>
+                <th>Charge Rule Type</th>
+                <th>Rate Method</th>
+                <th>Genaral Ledger</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in ChargeRuleList">
+                <td><span> {{$index + 1}} </span></td>
+                <td><span> {{item.ChargeRuleName}} </span></td>
+                <td><span> {{item.RuleCategory}} </span></td>
+                <td><span> {{item.RuleType}} </span></td>
+                <td><span> {{item.RateMethod}} </span></td>
+                <td><span> {{item.GLAccNumber}} </span></td>
+                <td>
+                    <span>
+                        <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeUnionInfo($index)">Change</button>
+                        <!--<button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteUnionInfo($index)">Delete</button>-->
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!--<div has-permission='Edit'>
+        <button  type="button" class="btn btn-primary editable-table-button btn-xs">Permission</button>
+    </div>-->
+</body>
+</html>

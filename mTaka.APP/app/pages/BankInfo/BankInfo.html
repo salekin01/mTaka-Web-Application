@@ -1,0 +1,353 @@
+﻿<form name="BankInfoForm" class="form-inline" ng-submit="addData();">
+    <div class="widgets">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Bank Info" ba-panel-class="with-scroll">
+                    <ba-wizard>
+                        <ba-wizard-step title="GENERAL INFO" form="BankForm">
+                            <!--<form name="BankForm" novalidate>-->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Bank ID" class="form-control" id="BankId" ng-model="BankModel.BankId" placeholder="Bank ID" ng-disabled="true">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Bank Name" class="form-control" id="BankNM" ng-model="BankModel.BankNM"
+                                               placeholder="Bank Name" ng-disabled="false"
+                                               validation-field-required="true"
+                                               required
+                                               validation-only-alphabets="{message:'Please Bank Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Short Name" class="form-control" id="BankShortNM" ng-model="BankModel.BankShortNM"
+                                               placeholder="Short Name"
+                                               required
+                                               validation-field-required="true"
+                                               validation-only-alphabets="{message:'Please Bank Short Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Bank Report Name" class="form-control" id="BankReportNM" ng-model="BankModel.BankReportNM"
+                                               placeholder="Bank Report Name"
+                                               required
+                                               validation-field-required="true"
+                                               validation-only-alphabets="{message:'Please Bank Report Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="CB ID" class="form-control" id="CbId" ng-model="BankModel.CbId"
+                                               placeholder="CB ID"
+                                               validation-field-required="true"
+                                               validation-only-numbers="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--</form>-->
+                            <!--End of Customer Info-->
+                        </ba-wizard-step>
+                        <ba-wizard-step title="ADDRESS" form="BankForm">
+                            <!--<form name="BankForm" novalidate>-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>PRESENT ADDRESS</h5>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <input type="text" title="Address" class="form-control" id="Address" ng-model="BankModel.Address"
+                                                   placeholder="Address"
+                                                   required
+                                                   validation-field-required="true"
+                                                   validation-only-alphabets="{message:'Please Enter Address (Only A-Z)', value: true}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <ui-select ng-model="BankModel.CountryId"
+                                                       title="Country"
+                                                       required
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="CountryId">
+                                                <ui-select-match allow-clear="true" placeholder="Country">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in CountryForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group ">
+                                            <ui-select ng-model="BankModel.CityId"
+                                                       title="City"
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="CityId"
+                                                       required>
+                                                <ui-select-match allow-clear="true" placeholder="City">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in CityForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <ui-select ng-model="BankModel.DistrictId"
+                                                       title="District"
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="DistrictId"
+                                                       required>
+                                                <ui-select-match allow-clear="true" placeholder="District">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <ui-select ng-model="BankModel.DivisionId"
+                                                       title="Division"
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="DivisionId"
+                                                       required>
+                                                <ui-select-match allow-clear="true" placeholder="Division">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in DivisionInfForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <ui-select ng-model="BankModel.UpazilaId"
+                                                       title="Upazilla"
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="UpazilaId"
+                                                       required>
+                                                <ui-select-match allow-clear="true" placeholder="Upazila">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in UpazilaInfoForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <ui-select ng-model="BankModel.UnionId"
+                                                       title="Union"
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="UnionId"
+                                                       required>
+                                                <ui-select-match allow-clear="true" placeholder="Union">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in UnionInfoForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <ui-select ng-model="BankModel.PSId"
+                                                       title="Police Station"
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="PSId"
+                                                       required>
+                                                <ui-select-match allow-clear="true" placeholder="Police Station">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in PSInfoForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <ui-select ng-model="BankModel.POId"
+                                                       title="Post Office"
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="POId"
+                                                       required>
+                                                <ui-select-match allow-clear="true" placeholder="Post Office">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in PostOfficeForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <ui-select ng-model="BankModel.AreaId"
+                                                       title="Area"
+                                                       class="btn-group bootstrap-select form-control"
+                                                       ng-disabled="false"
+                                                       append-to-body="true"
+                                                       search-enabled="true"
+                                                       id="AreaId"
+                                                       required>
+                                                <ui-select-match allow-clear="true" placeholder="Area">
+                                                    {{$select.selected.Text}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--</form>-->
+                        </ba-wizard-step>
+
+                        <ba-wizard-step title="CONTACT">
+                            <!--<form name="OfficialInfoForm">-->
+                            <h5>CONTACT</h5>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" title="Phone" class="form-control" id="Phone" ng-model="BankModel.Phone"
+                                               placeholder="Phone" ng-disabled="false"
+                                               maxlength="15"
+                                               required
+                                               validation-field-required="true"
+                                               validation-only-numbers="{message:'Please Enter your Phone Number (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" title="Fax" class="form-control" id="Fax" ng-model="BankModel.Fax"
+                                               placeholder="Fax"
+                                               maxlength="18"
+                                               required
+                                               validation-field-required="true"
+                                               validation-only-numbers="{message:'Please Enter your Fax Number (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" title="Swift" class="form-control" id="Swift" ng-model="BankModel.Swift"
+                                               required
+                                               placeholder="Swift">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" title="Email" class="form-control" id="Email" ng-model="BankModel.Email"
+                                               required
+                                               placeholder="Email"
+                                               validation-field-required="true"
+                                               validation-email="true">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" title="Web" class="form-control" id="Web" ng-model="BankModel.Web" placeholder="Web"
+                                               validation-field-required="true">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" title="Contact Person" class="form-control" id="ContactPerson" ng-model="BankModel.ContactPerson"
+                                               required
+                                               placeholder="Contact Person"
+                                               validation-field-required="true"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>  
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <label class="custom-checkbox nowrap">
+                                            <input type="checkbox" id="HomeBankAppFlag" ng-model="BankModel.HomeBankAppFlag" value=" all Type">
+                                            <span>Home Bank</span>
+                                        </label>
+                                    </div>   
+                                </div>                   
+                            </div>
+                        </ba-wizard-step>
+                    </ba-wizard>
+                    <div class="input-group">
+                        <br />
+                        <div class="input-group" style="padding-left:15px;">
+                            <div class="input-group" ng-if="SubmitBtn==='Add'">
+                                <br />
+                                <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-click="addData()">Add</button>
+                                <span> </span>
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                            </div>
+                            <div class="input-group" ng-if="SubmitBtn==='Update'">
+                                <br />
+                                <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                                <span> </span>
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="BankInfoTable" ba-panel ba-panel-title="Bank Info Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                            <div include-with-scope="../../app/pages/BankInfo/BankInfoTable.html"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

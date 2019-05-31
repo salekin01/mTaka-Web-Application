@@ -1,0 +1,128 @@
+﻿
+<div>
+    <form name="CommissionSetupForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Commission Setup" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" title="Commission Setup ID" class="form-control" id="CommissionId" ng-model="CommissionSetupModel.CommissionId" placeholder="Commission Setup ID" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="CommissionSetupModel.DefineServiceId"
+                                           title="Select Define Service"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DefineServiceId"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Define Service">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DefineServiceForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="CommissionSetupModel.AccTypeId"
+                                           title="Select Account Type"
+                                           class="btn-group bootstrap-select form-control"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="AccTypeId"
+                                           ng-disabled="false">
+                                    <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                        </div>
+                        <!--<div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <input type="text" title="Charge %" class="form-control" id="Charge" ng-model="CommissionSetupModel.Charge" placeholder="Charge %" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>-->
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" title="Value-Added Tax" class="form-control" id="Vat" ng-model="CommissionSetupModel.Vat" placeholder="Value-Added Tax">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" title="GL Account" class="form-control" id="GLAccount" ng-model="CommissionSetupModel.GLAccount" placeholder="GL Account">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <input type="text" title="Commission Rate" class="form-control" id="CommissionRate" ng-model="CommissionSetupModel.CommissionRate" placeholder="Commission Rate">
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" title="AIT" class="form-control" id="AIT" ng-model="CommissionSetupModel.AIT" placeholder="Advance Income Tax">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-disabled="TransactionTemplateForm.$invalid" ng-click="AddItem()">Add Item</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                    </div>
+                    <!--<div class="input-group" style="padding-left:15px;">
+                        <br />
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="CommissionSetupForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="ListCommissionSetup.length > 0">
+            <div class="col-md-12">
+                <div id="TransactionTemplateNewItem" ba-panel ba-panel-title="Added Items" ba-panel-class="with-scroll">
+                    <div class="input-group" include-with-scope="../../app/pages/CommissionSetup/CommissionSetupTempTable.html"></div>
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" >{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearAddItems()">Clear Item</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="CommissionSetupTable" ba-panel ba-panel-title="Commission Setup Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/CommissionSetup/CommissionSetupTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+</div>

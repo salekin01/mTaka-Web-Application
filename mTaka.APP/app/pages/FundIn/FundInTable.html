@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Fund In Id</td>
+            <td>To Account No.</td>
+            <!--<td>To Branch</td>-->
+            <td>From Account Balance</td>
+            <td>Amount</td>
+            <td>Narration</td>
+            <td>From Account No</td>
+            <!--<td>From Branch</td>-->
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in FundInList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.FundInId}} </span></td>
+            <td><span> {{item.ToSystemAccountNo}} </span></td>
+            <!--<td><span> {{item.ToBranchNm}} </span></td>-->
+            <td><span> {{item.FromAccountBalance}} </span></td>
+            <td><span> {{item.Amount}} </span></td>
+            <td><span> {{item.Narration}} </span></td>
+            <td><span> {{item.FromSystemAccountNo}} </span></td>
+            <!--<td><span> {{item.FromBranchNm}} </span></td>-->
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeFundIn($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteFundIn($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

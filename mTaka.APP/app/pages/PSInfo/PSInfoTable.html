@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Police Statio Id</td>
+            <td>Police Statio Name</td>
+            <td>Police Statio Short Name</td>
+            <td>Upazila</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in PSInfoList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.PoliceStationId}} </span></td>
+            <td><span> {{item.PoliceStationNm}} </span></td>
+            <td><span> {{item.PoliceStationShortNm}} </span></td>
+            <td><span> {{item.UpazilaNm}} </span></td>
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changePSInfo($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deletePSInfo($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

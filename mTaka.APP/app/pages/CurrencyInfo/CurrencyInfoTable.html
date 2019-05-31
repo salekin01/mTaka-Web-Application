@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Currency Id</td>
+            <td>Currency Name</td>
+            <td>Currency Short Name</td>
+            <td>Currency Report Name</td>
+            <td>Currency Decimal Name</td>
+            <td>CB Code</td>
+            <td>International Name</td>
+            <td>Base Currency Convert Flag</td>
+            <td>Local Variable</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in CurrencyInfoList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.CurrencyId}} </span></td>
+            <td><span> {{item.CurrencyNm}} </span></td>
+            <td><span> {{item.CurrencyShortNm}} </span></td>
+            <td><span> {{item.CurrencyReportNm}} </span></td>
+            <td><span> {{item.CurrencyDecimalNm}} </span></td>
+            <td><span> {{item.CBCode}} </span></td>
+            <td><span> {{item.InternationalName}} </span></td>
+            <td><span> {{item.BaseCurrencyConvertFlag}} </span></td>
+            <td><span> {{item.LocalVariable}} </span></td>
+            <td>
+                <span>
+                    <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeCurrencyInfo($index)">Change</button>
+                    <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteCurrencyInfo($index)">Delete</button>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

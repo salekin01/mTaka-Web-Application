@@ -1,0 +1,219 @@
+﻿<div>
+    <form name="TransactionTemplateForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Transaction Template" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" class="form-control" id="TransactionTemplateId" ng-model="TransactionTemplateModel.TransactionTemplateId" title="Transaction Template Id"
+                                       placeholder="Transaction Template Id" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="TransactionTemplateModel.DefineServiceId"
+                                           title="Select Define Service"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DefineServiceId"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Define Service">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DefineServiceForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="TransactionTemplateModel.SourceofAccountId"
+                                           title="Select Source of Account"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="SourceofAccountId"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Source of Account">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in SourceofAccountForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="TransactionTemplateModel.TypeofAccountId"
+                                           title="Select Type of Account"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="TypeofAccountId"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Type of Account">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in TypeofAccountForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="TransactionTemplateModel.AccountTypeId"
+                                           title="Select Account Type"
+                                           class="btn-group bootstrap-select form-control"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="AccountTypeId"
+                                           ng-disabled="false"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Account No." class="form-control TextRequiredField" id="GLAccSl"
+                                       validation-no-space="true" validation-only-numbers="true" ng-model="TransactionTemplateModel.GLAccSl"
+                                       placeholder="Account No." required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Account Name" class="form-control TextRequiredField" id="GLAccName" ng-model="TransactionTemplateModel.GLAccName"
+                                       placeholder="Account Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="TransactionTemplateModel.DebitOrCredit"
+                                           title="Select Balance Type"
+                                           class="btn-group bootstrap-select form-control"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DebitOrCredit"
+                                           ng-disabled="false"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Debit or Credit">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DebitOrCreditForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" title="Narration" class="form-control TextRequiredField" id="Narration" ng-model="TransactionTemplateModel.Narration"
+                                       placeholder="Narration" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="TransactionTemplateModel.ChargeRuleId"
+                                           title="Select Balance Type"
+                                           class="btn-group bootstrap-select form-control"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ChargeRuleId"
+                                           ng-disabled="false">
+                                    <ui-select-match allow-clear="true" placeholder="Select Charge Rule">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ChargeRuleForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--<div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="TransactionTemplateModel.ChargeRuleId"
+                                           title="Select Charge Rule"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="ChargeRuleId"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Charge Rule">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in ChargeRuleForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>-->
+                        <br />
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="AddItem()">Add Item</button>
+                                <span> </span>
+                                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="ListTransactionTemplate.length > 0">
+            <div class="col-md-12">
+                <div id="TransactionTemplateNewItem" ba-panel ba-panel-title="Added Items" ba-panel-class="with-scroll">
+                    <div class="input-group" include-with-scope="../../app/pages/TransactionTemplate/TransactionTemplateNewItemTable.html"></div>
+                    <!--<div> </div>
+                    <span> </span>
+                    <span> </span>-->
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="TransactionTemplateForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearItems()">Clear Add Item</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="TransactionTemplate" ba-panel ba-panel-title="Transaction Template Table" ba-panel-class="with-scroll"
+                     ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/TransactionTemplate/TransactionTemplateTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

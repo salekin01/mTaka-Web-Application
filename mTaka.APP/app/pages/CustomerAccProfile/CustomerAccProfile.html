@@ -1,0 +1,659 @@
+﻿<script type="text/javascript">
+
+  //Phone Validation
+
+function PhoneValidation() {
+    var fld = document.getElementById("WalletAccountNo");
+
+    if (fld.value == "") {
+        document.getElementById("PhoneValidation").innerHTML = "Can't Be Empty";
+        fld.value = "";
+        fld.focus();
+        return false;
+    } else {
+        document.getElementById("PhoneValidation").innerHTML = "";
+    }
+    var mySplitResult = fld.value.substring(0, 3);
+
+    if (mySplitResult != "017" && mySplitResult != "019" && mySplitResult != "018" & mySplitResult != "016" & mySplitResult != "015") {
+        document.getElementById("PhoneValidation").innerHTML = "Not in correct format";
+        fld.focus();
+        return false;
+    } else {
+        document.getElementById("PhoneValidation").innerHTML = "";
+    }
+    if (isNaN(fld.value)) {
+        document.getElementById("PhoneValidation").innerHTML = "Number contains illegal characters";
+        fld.value = "";
+        fld.focus();
+        return false;
+    } else {
+        document.getElementById("PhoneValidation").innerHTML = "";
+    }
+    if (!(fld.value.length == 11)) {
+        document.getElementById("PhoneValidation").innerHTML = "Please enter 11 digit mobile no";
+        fld.focus();
+        return false;
+    } else {
+        document.getElementById("PhoneValidation").innerHTML = "";
+    }
+}
+
+</script>
+
+<form name="CusInfoForm" class="form-inline" ng-submit="addData();">
+    <div class=" widgets">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="" ba-panel-class="with-scroll">
+                <ba-wizard>
+                    <ba-wizard-step title="Customer Information" form="personalInfoForm">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="AccountProfileId" ng-model="CusModel.AccountProfileId" placeholder="Customer ID"
+                                           ng-disabled="true"
+                                           title="Customer ID">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField">
+                                    <ui-select ng-model="CusModel.AccTypeId"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               required
+                                               title="Customer Account Type"
+                                               id="AccTypeId">
+                                        <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField">
+                                    <input type="text" class="form-control" id="WalletAccountNo" ng-model="CusModel.WalletAccountNo"
+                                           placeholder="Wallet Account No"
+                                           title="Wallet Account No"
+                                           onkeyup="PhoneValidation()"
+                                           onmouseout="PhoneValidation()"
+                                           onblur="PhoneValidation()"
+                                           validation-max-length="11"
+                                           validation-only-numbers="{message:'Only Number', value: true}">
+                                </div>
+                                <span id="PhoneValidation" style="color:white"> </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField">
+                                    <input type="text" class="form-control" id="UserName" ng-model="CusModel.UserName"
+                                           placeholder="Customer Name"
+                                           title="Customer Name"
+                                           validation-field-required="true"
+                                           validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="FatherName" ng-model="CusModel.FatherName"
+                                           placeholder="Father's Name"
+                                           title="Father's Name'"
+                                           validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                </div>                                
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="MotherName" ng-model="CusModel.MotherName"
+                                           placeholder="Mother's Name"
+                                           title="Mother's Name'"
+                                           validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">                                                       
+                            <div class="col-md-4">
+                                <div class="input-group ">
+                                    <ui-select ng-model="CusModel.GenderId"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               title="GenderId"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               id="GenderId">
+                                        <ui-select-match allow-clear="true" placeholder="Select Gender">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in GenderForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group ">
+                                    <ui-select ng-model="CusModel.NationalityId"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               title="Nationality"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               id="NationalityId">
+                                        <ui-select-match allow-clear="true" placeholder="Select Nationality">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in NationalityForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                    <!--<input type="text" class="form-control" id="Nationality" ng-model="CusModel.Nationality"
+        validation-field-required="true"
+        title="Nationality"
+        validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}"
+        placeholder=" Nationality">-->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="Occupation" ng-model="CusModel.Occupation"
+                                           placeholder="Occupation"
+                                           ng-disabled="false"
+                                           title="Occupation"
+                                           validation-only-alphabets="{message:'Please Enter Occupation (Only A-Z)', value: true}">
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="row">                            
+                            <div class="col-md-4">
+                                <div class="input-group ">
+                                    <input type="text" class="form-control" id="AlternativeMblNo" ng-model="CusModel.AlternativeMblNo"
+                                           placeholder="Customer’s alternate mobile no."
+                                           ng-disabled="false"
+                                           title="Customer’s alternate mobile no."
+                                           validation-only-numbers="true">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField">
+                                    <input type="text" class="form-control" id="Email" ng-model="CusModel.Email"
+                                           placeholder="Email (if availabe)"
+                                           ng-disabled="false"
+                                           title="Email" required
+                                           validation-email="{message:'Please Enter Address (Only A-Z)', value: true}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input type="text"
+                                           id="DOB" ng-model="CusModel.DOB"
+                                           class="form-control"
+                                           title="Date Of Birth"
+                                           placeholder="Date Of Birth"
+                                           uib-datepicker-popup="dd/MM/yyyy"
+                                           is-open="dpOpenStatus.withRequired" />
+                                    <span class="input-group-btn">
+                                        <button type="button"
+                                                class="btn btn-default"
+                                                ng-click="setDpOpenStatus('withRequired', $event)">
+                                            <i class="ion-ios-calendar-outline"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField">
+                                    <ui-select ng-model="CusModel.IdentificationId"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               id=" IdentificationId"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               title="Identification Type"
+                                               required>
+                                        <ui-select-match allow-clear="true" placeholder="Select Identification Type">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in CustomerIdentificationForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField" ng-show="CusModel.IdentificationId.Value == '001'">
+                                    <input type="text" class="form-control" id="IdentificationNo" ng-model="CusModel.IdentificationNo"
+                                           placeholder=" National id no"
+                                           validation-field-required="true"
+                                           title="National id No"
+                                           validation-max-length="14"
+                                           validation-only-numbers="{message:'Only Number', value: true}" />
+                                </div>
+                                <div class="input-group TextRequiredField" ng-show="CusModel.IdentificationId.Value == '002'">
+                                    <input type="text" class="form-control" id="IdentificationNo" ng-model="CusModel.IdentificationNo"
+                                           placeholder="Passport No"
+                                           validation-field-required=" true"
+                                           title="Passport No"
+                                           validation-max-length="10"
+                                           validation-only-numbers="{message:'Only Number', value: true}" />
+                                </div>
+                                <div class="input-group TextRequiredField" ng-show="CusModel.IdentificationId.Value == '003'">
+                                    <input type="text" class="form-control" id="IdentificationNo" ng-model="CusModel.IdentificationNo"
+                                           placeholder="Driving Licence"
+                                           validation-field-required=" true"
+                                           title="Driving Licence"
+                                           validation-max-length="10"
+                                           validation-only-numbers="{message:'Only Number', value: true}" />
+                                </div>
+                            </div>
+                        </div>                        
+                        <!--<div class="input-group ">
+            <ui-select ng-model="CusModel.CustomerCategory"
+                       class="btn-group bootstrap-select form-control"
+                       ng-disabled="false"
+                       append-to-body="true"
+                       search-enabled="true"
+                       required
+                       id="CustomerCategory">
+                <ui-select-match allow-clear="true" placeholder="Select Customer Category">
+                    {{$select.selected.Text}}
+                </ui-select-match>
+                <ui-select-choices repeat="withSearchItem in CusCategoryForDD | filter: $select.search">
+                    <span ng-bind-html="withSearchItem.Text"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>-->
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Address" form="productInfoForm">
+                        <div class="input-group " style="width:30%" title="Address Type">
+                            <ui-select ng-model="CusModel.Address"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="Address">
+                                <ui-select-match allow-clear="true" placeholder="Select Address Type">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in AddressForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="PresentAddress" ng-show="CusModel.Address.Value == '001'">
+                                    <!--<h5>PRESENT ADDRESS</h5>-->
+                                    <div class="row">
+                                        <br />
+                                        <div class="col-md-4">
+                                            <div class="input-group TextRequiredField">
+                                                <input type="text" class="form-control" id="PresentAddress1" placeholder="Present Address 1" ng-model="CusModel.PresentAddress1"
+                                                       validation-field-required="{message:'Enter Your Address 1', value: true}"
+                                                       title="Present Address 1" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="PresentAddress2" placeholder="Present Address 2" ng-model="CusModel.PresentAddress2"
+                                                       title="Present Address 2" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group TextRequiredField">
+                                                <ui-select ng-model="CusModel.CountryId"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           title="Country"
+                                                           id="CountryId"
+                                                           required>
+                                                    <ui-select-match allow-clear="true" placeholder="Select Country">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in CountryInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group TextRequiredField">
+                                                <ui-select ng-model="CusModel.PresentCity"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="PresentCity"
+                                                           title="City"
+                                                           required>
+                                                    <ui-select-match allow-clear="true" placeholder="Select City">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in CityInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group TextRequiredField">
+                                                <ui-select ng-model="CusModel.PresentDistrict"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="PresentDistrict"
+                                                           title="District"
+                                                           required>
+                                                    <ui-select-match allow-clear="true" placeholder="Select District">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group TextRequiredField">
+                                                <ui-select ng-model="CusModel.PresentThana"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="PresentThana"
+                                                           title="Thana"
+                                                           required>
+                                                    <ui-select-match allow-clear="true" placeholder="Select Thana">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in PSInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group TextRequiredField">
+                                                <ui-select ng-model="CusModel.PresentArea"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="false"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           id="PresentArea"
+                                                           title="Area"
+                                                           required>
+                                                    <ui-select-match allow-clear="true" placeholder="Select Area">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="PermanentAddress" ng-show="CusModel.Address.Value == '002'">
+                                    <!--<h5>PERMANENT ADDRESS</h5>-->
+                                    <br />
+                                    <div class="input-group">
+                                        <input type="checkbox" name="sameAsPeranent" id="sameAsPeranent" ng-model="CusModel.sameAsPeranent"> Same As Present Address<br>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="PermanentAddress1" placeholder="Permanent Address 1"
+                                                       ng-model="CusModel.PermanentAddress1"
+                                                       title="Permanent Address 1"
+                                                       ng-disabled="CusModel.sameAsPeranent == true" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="PermanentAddress2" placeholder="Permanent Address 2"
+                                                       ng-model="CusModel.PermanentAddress2"
+                                                       title="Permanent Address 2"
+                                                       ng-disabled="CusModel.sameAsPeranent == true" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="CusModel.PermanentCountry"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="CusModel.sameAsPeranent == true"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           title="Country"
+                                                           id="PermanentCountry">
+                                                    <ui-select-match allow-clear="true" placeholder="Select Country">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in CountryInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="CusModel.PermanentCity"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="CusModel.sameAsPeranent == true"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           title="City"
+                                                           id="PermanentCity">
+                                                    <ui-select-match allow-clear="true" placeholder="Select City">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in CityInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="CusModel.PermanentDistrict"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="CusModel.sameAsPeranent == true"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           title="District"
+                                                           id="PermanentDistrict">
+                                                    <ui-select-match allow-clear="true" placeholder="Select District">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="CusModel.PermanentThana"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="CusModel.sameAsPeranent == true"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           title="Thana"
+                                                           id="PermanentThana">
+                                                    <ui-select-match allow-clear="true" placeholder="Select Thana">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in PSInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <ui-select ng-model="CusModel.PermanentArea"
+                                                           class="btn-group bootstrap-select form-control"
+                                                           ng-disabled="CusModel.sameAsPeranent == true"
+                                                           append-to-body="true"
+                                                           search-enabled="true"
+                                                           title="Area"
+                                                           id="PermanentArea">
+                                                    <ui-select-match allow-clear="true" placeholder="Select Area">
+                                                        {{$select.selected.Text}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Bank Info">
+                        <!--<h5>BANK ACC INFO(if available)</h5>-->
+                        <div class="row">
+                            <div id="BankInfo">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="BankAccountNo" ng-model="CusModel.BankAccountNo"
+                                               placeholder="Bank Account No." ng-disabled="false" title="Bank Account No." validation-only-numbers="true">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="BankAccountName" ng-model="CusModel.BankAccountName" placeholder="Bank Account Name"
+                                               title="Bank Account Name" ng-disabled="true" validation-only-alphabets="{message:'Please Enter Account Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="AccName" ng-model="CusModel.Branch" placeholder="Branch Name"
+                                               title="Branch Name" ng-disabled="true" validation-only-alphabets="{message:'Please Enter Account Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Parent Info">
+                        <div class="row">
+                            <h5></h5>
+                            <!--<div class="col-md-4">
+                                <div class="input-group TextRequiredField">
+                                    <input type="text" class="form-control" id="IntroducerSystemAccountNo" ng-model="CusModel.IntroducerSystemAccountNo"
+                                           placeholder="Introducer Wallet Account No" ng-disabled="false"
+                                           required
+                                           ng-blur="GetChannelInfobyWalletAccNo()"
+                                           title="Introducer Wallet Account No"
+                                           validation-max-length="11"
+                                           validation-only-numbers="{message:'Only Number', value: true}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField">
+                                    <input type="text" class="form-control" id="IntroducerName" ng-model="CusModel.IntroducerName"
+                                           placeholder="Introducer Name"
+                                           ng-disabled="false"
+                                           required
+                                           title="Introducer Name"
+                                           validation-field-required="true"
+                                           validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                </div>
+                            </div>-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--<hr />-->
+                                    <div class="col-md-4">
+                                        <div class="input-group TextRequiredField">
+                                            <input type="text" class="form-control" id="ParentAccountProfileId" ng-model="CusModel.ParentAccountProfileId"
+                                                   placeholder="Channel Wallet Account No" ng-disabled="false"
+                                                   required
+                                                   ng-blur="GetChannelInfobyWalletAccNo()"
+                                                   title="Channel's Wallet Account No"
+                                                   validation-max-length="11"
+                                                   validation-only-numbers="{message:'Only Number', value: true}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group TextRequiredField">
+                                            <input type="text" class="form-control" id="ChannelMFSAccName" ng-model="CusModel.ChannelMFSAccName"
+                                                   style="font-weight: bold"
+                                                   placeholder="Account Name"
+                                                   ng-disabled="true"
+                                                   title="Account Name"
+                                                   validation-field-required="true"
+                                                   validation-only-alphabets="{message:'Please Enter Account Name (Only A-Z)', value: true}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ba-wizard-step>
+                    <ba-wizard-step title="Others Info">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField">
+                                    <input type="text" class="form-control" id="TransPurpose" ng-model="CusModel.TransPurpose"
+                                           placeholder="Purpose of Transaction"
+                                           ng-disabled="false"
+                                           required
+                                           title="Purpose of Transaction"
+                                           validation-field-required="true"
+                                           validation-only-alphabets="{message:'Please Enter Address (Only A-Z)', value: true}">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="SourceOfFund" ng-model="CusModel.SourceOfFund"
+                                           placeholder="Source Of Fund"
+                                           title="Source Of Fund"
+                                           ng-disabled="false">
+                                </div>
+                            </div>
+                        </div>
+                    </ba-wizard-step>
+                </ba-wizard>
+                <div class="input-group">
+                    <br />
+                    <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="CusInfoForm.$invalid" >{{SubmitBtn}}</button>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="CustomerAccProfileTable" ba-panel ba-panel-title="Customer Info Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                        <div include-with-scope="../../app/pages/CustomerAccProfile/CustomerAccProfileTable.html"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</form>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>      
+            <td>Type Id</td>
+            <td>Type Name</td>
+            <td>Category Name</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in CusTypeList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.CusTypeId}} </span></td>
+            <td><span> {{item.CusTypeNm}} </span></td>
+            <td><span> {{item.CusCategoryNm}} </span></td>
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeCusType($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteCusType($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

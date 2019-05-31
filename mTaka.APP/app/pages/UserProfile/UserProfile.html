@@ -1,0 +1,96 @@
+﻿<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(180)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+</script>
+
+<div onload="closeDialog()">
+    <form name="UserProfileForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Profile" ba-panel-class="with-scroll">
+                    <div class="col-md-12">
+                        <img id="blah" src="../../../assets/img/propic.png" alt="" />
+                        <!--<input type='file' multiple onchange="angular.element(this).scope().setFile(this)" />-->
+                        <input type='file' onchange="readURL(this);" />
+                    </div>
+                    <br />
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Account No</span>
+                            <input type="text" class="form-control" id="UserName" ng-model="UserProfileModel.WalletAccountNo" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Account Name</span>
+                            <input type="text" class="form-control" id="WalletAccountNo" ng-model="UserProfileModel.UserName" ng-disabled="false">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Father's Name</span>
+                            <input type="text" class="form-control" id="FatherName" ng-model="UserProfileModel.FatherName" ng-disabled="false">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Mother's Name</span>
+                            <input type="text" class="form-control" id="MotherName" ng-model="UserProfileModel.MotherName" ng-disabled="false">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">{{UserProfileModel.DOB | date:'MMMM dd, yyyy'}}</span>
+                            <input type="date" class="form-control" id="DOB" ng-model="UserProfileModel.DOB" ng-disabled="false">
+                        </div>
+                    </div>
+                    <!--<div class="col-md-4">
+                        <div class="input-group ">
+                            <ui-select ng-model="UserProfileModel.Gender"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       title="Gender"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="Gender">
+                                <ui-select-match allow-clear="true" placeholder="Change Gender">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in GenderForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>-->
+
+                    <br />
+                    <div class="input-group" style="padding-left:15px;">
+                        <br />
+                        <button type="submit" class="btn btn-default editable-table-button btn-xs" ng-click="">Update</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-default editable-table-button btn-xs" ng-click="ClearFields()">Setting</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    .form-inline .input-group .input-group-addon, .form-inline .input-group .input-group-btn, .form-inline .input-group .form-control {
+        width: 200px !important;
+    }
+</style>

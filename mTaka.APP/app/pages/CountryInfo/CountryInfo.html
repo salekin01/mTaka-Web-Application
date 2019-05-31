@@ -1,0 +1,104 @@
+﻿<div>
+    <form name="CountryInfoForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Country Info" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" class="form-control" id="CountryId" ng-model="CountryInfoModel.CountryId"
+                                       title="Country Id" placeholder="Country Id" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="CountryNm" ng-model="CountryInfoModel.CountryNm"
+                                       validation-only-alphabets="true" title="Country Name" placeholder="Country Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="CountryShortNm" title="Country Short Name"
+                                       validation-only-alphabets="true" ng-model="CountryInfoModel.CountryShortNm"
+                                       placeholder="Country Short Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="ISOCode" ng-model="CountryInfoModel.ISOCode"
+                                       title="ISO Code" placeholder="ISO Code">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="CBCode" ng-model="CountryInfoModel.CBCode"
+                                       title="CB Code" placeholder="CB Code">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="NationalityName" title="Nationality Name"
+                                       validation-only-alphabets="true" ng-model="CountryInfoModel.NationalityName" placeholder="Nationality Name">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="CountryInfoModel.CurrencyId"
+                                           title="Select Currency"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="CurrencyId">
+                                    <ui-select-match allow-clear="true" placeholder="Select Currency">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in CurrencyInfoForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="NativeCountryFlag" title="Native Country Flag"
+                                       ng-model="CountryInfoModel.NativeCountryFlag" placeholder="Native Country Flag">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="input-group" style="padding-left:15px;">
+                        <div class="input-group" ng-if="SubmitBtn==='Add'">
+                            <br />
+                            <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                        <div class="input-group" ng-if="SubmitBtn==='Update'">
+                            <br />
+                            <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="CountryInfoTable" ba-panel ba-panel-title="Country Info Table" ba-panel-class="with-scroll"
+                     ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/CountryInfo/CountryInfoTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

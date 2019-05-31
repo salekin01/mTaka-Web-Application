@@ -1,0 +1,21 @@
+﻿<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <td>SL NO</td>
+        <td>Define Service ID</td>
+        <td>Define Service Name</td>
+        <td>Function Id</td>
+        <td>Action</td>
+    </tr>
+    <tr ng-repeat="item in define_service ">
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.DefineServiceId}} </span></td>
+        <td><span> {{item.DefineServiceNm}} </span></td>
+        <td><span> {{item.FunctionIdForDefineService}} </span></td>
+        <td>
+            <span>
+                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeDefineService($index)">Change</button>
+                <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteDefineService($index)">Delete</button>-->
+            </span>
+        </td>
+    </tr>
+</table>

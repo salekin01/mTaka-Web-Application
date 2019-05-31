@@ -1,0 +1,71 @@
+﻿<div>
+    <form name="DistrictInfoForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="District Info" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" class="form-control" id="DistrictId" ng-model="DistrictInfoModel.DistrictId"
+                                       title="District Id" placeholder="District Id" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="DistrictNm" ng-model="DistrictInfoModel.DistrictNm"
+                                       validation-only-alphabets="true" title="District Name" placeholder="District Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="DistrictShortNm" title="District Short Name"
+                                       validation-only-alphabets="true" ng-model="DistrictInfoModel.DistrictShortNm" 
+                                       placeholder="District Short Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="DistrictInfoModel.DivisionId"
+                                           title="Select Division"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="DivisionId">
+                                    <ui-select-match allow-clear="true" placeholder="Select Division">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in DivisionInfoForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <br />
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" 
+                                ng-disabled="DistrictInfoForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" 
+                                ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="DistrictInfoTable" ba-panel ba-panel-title="District Info Table" ba-panel-class="with-scroll" 
+                     ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/DistrictInfo/DistrictInfoTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

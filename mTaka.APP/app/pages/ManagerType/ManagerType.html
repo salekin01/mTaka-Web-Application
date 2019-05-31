@@ -1,0 +1,103 @@
+﻿<form name="ManagerTypeForm" class="form-inline" ng-submit="addData();">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel
+                 ba-panel-title="Manager Type"
+                 ba-panel-class="with-scroll">
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ManTypeId" ng-model="ManTypeModel.ManTypeId" placeholder="Manager Type ID" ng-disabled="true">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ManTypeNm" ng-model="ManTypeModel.ManTypeNm"
+                               placeholder="Manager Type Name"
+                               validation-field-required="true"
+                               required
+                               validation-only-alphabets="{message:'Please Enter Manager Type (Only A-Z)', value: true}">
+
+                    </div>
+                </div>
+               
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="ManTypeShortNm" ng-model="ManTypeModel.ManTypeShortNm"
+                               placeholder="Manager Type Short Name"
+                               validation-field-required="true"
+                               required
+                               validation-only-alphabets="{message:'Please Enter Manager Type Short Name(Only A-Z)', value: true}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group ">
+                        <ui-select ng-model="ManTypeModel.ManagerCategoryId"
+                                   class="btn-group bootstrap-select form-control"
+                                   ng-disabled="false"
+                                   append-to-body="true"
+                                   search-enabled="true"
+                                   required
+                                   id="ManagerCategoryId">
+                            <ui-select-match allow-clear="true" placeholder="Select Manager Category">
+                                {{$select.selected.Text}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="withSearchItem in ManagerCategoryForDD | filter: $select.search">
+                                <span ng-bind-html="withSearchItem.Text"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+               
+                <div class="col-md-4">
+                    <div class="input-group ">
+                        <ui-select ng-model="ManTypeModel.ManTypeParentAcc"
+                                   class="btn-group bootstrap-select form-control"
+                                   ng-disabled="false"
+                                   append-to-body="true"
+                                   search-enabled="true"
+                                   required
+                                   id="ManTypeParentAcc">
+                            <ui-select-match allow-clear="true" placeholder="Select Parent Manager">
+                                {{$select.selected.Text}}
+                            </ui-select-match>
+                            <ui-select-choices repeat="withSearchItem in ParentAccForManGroup | filter: $select.search">
+                                <span ng-bind-html="withSearchItem.Text"></span>
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </div>
+               
+
+                <br />
+
+                <div class="input-group" style="padding-left:15px;">
+                    <div class="input-group" ng-if="SubmitBtn==='Add'">
+                        <br />
+                        <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                    <div class="input-group" ng-if="SubmitBtn==='Update'">
+                        <br />
+                        <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="groupTable" ba-panel ba-panel-title="Manager Type Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                <div include-with-scope="../../app/pages/ManagerType/ManagerTypeTable.html"></div>
+            </div>
+        </div>
+    </div>
+
+</form>

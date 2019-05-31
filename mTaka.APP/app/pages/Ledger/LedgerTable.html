@@ -1,0 +1,78 @@
+﻿<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>
+            Rows on Page
+            <select class="form-control selectpicker show-tick" title="Rows on Page" selectpicker
+                    ng-model="LedgerModel.smartTablePageSize" ng-options="i for i in [5,10,25,50,100]"></select>
+        </label>
+    </div>
+    <table class="table table-responsive table-striped" st-safe-src="LedgerModel.RowCollection" st-table="LedgerModel.LedgerTxnList">
+        <thead>
+            <tr class="sortable">
+                <th st-sort="">SL</th>
+                <th st-sort="TransectionDate">Transection Date</th>
+                <th st-sort="WalletAccountNo">Wallet Account</th>
+                <!--<th st-sort="PaymentAmount">Payment Amount</th>
+                <th st-sort="ReceiveAmount">Receive Amount</th>-->
+                <th st-sort="Amount">Pay/Receive Amount</th>
+                <th st-sort="DebitOrCredit">Dr/Cr</th>
+                <th st-sort="AccBalance">Current Balance</th>
+                <th st-sort="Narration">Narration</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <input st-search="TransectionDate" placeholder="Search Transection Date" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="WalletAccountNo" placeholder="Search Wallet Acc." class="input-sm form-control search-input" type="search" />
+                </th>
+                <!--<th>
+                    <input st-search="PaymentAmount" placeholder="Search Payment Amount" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="ReceiveAmount" placeholder="Search Receive Amount" class="input-sm form-control search-input" type="search" />
+                </th>-->
+                <th>
+                    <input st-search="Amount" placeholder="Search Pay/Receive Amount" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="DebitOrCredit" placeholder="Search Dr/Cr" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="AccBalance" placeholder="Search Current Balance" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="Narration" placeholder="Search Narration" class="input-sm form-control search-input" type="search" />
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in LedgerModel.LedgerTxnList">
+                <td>{{$index + 1}}</td>
+                <td class="text-center">{{item.TransectionDate | date : 'yyyy-MM-dd'}}</td>
+                <td class="text-center">{{item.WalletAccountNo}}</td>
+                <!--<td class="text-center">{{item.PaymentAmount}}</td>
+                <td class="text-center">{{item.ReceiveAmount}}</td>-->
+                <td class="text-center">{{item.Amount}}</td>
+                <td class="text-center">{{item.DebitOrCredit}}</td>
+                <td class="text-center">{{item.AccBalance}}</td>
+                <td class="text-center">{{item.Narration}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" class="text-center">
+                    <div st-pagination="" st-items-by-page="LedgerModel.smartTablePageSize" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+        <table class="table table-responsive table-striped" class="text-center">
+            <tr>
+                <td class="text-center">
+                    Current Balance : <input type="text" title="Current Balance" class="form-control" id="CurrentBalance" ng-model="LedgerModel.CurrentBalance" placeholder="Current Balance" ng-disabled="true">
+                </td>
+            </tr>
+        </table>
+    </table>
+</div>

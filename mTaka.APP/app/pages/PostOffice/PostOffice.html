@@ -1,0 +1,77 @@
+﻿<div>
+    <form name="PostOfficeForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Post Office" ba-panel-class="with-scroll">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="PostOfficeId" ng-model="PostOfficeModel.PostOfficeId" placeholder="Post Office Id" ng-disabled="true">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="PostOfficeNM" ng-model="PostOfficeModel.PostOfficeNM"
+                                   placeholder="Post Office Name"
+                                   validation-field-required="true"
+                                   required
+                                   validation-only-alphabets="{message:'Please Post Office Name (Only A-Z)', value: true}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="PostOfficeShortNM" ng-model="PostOfficeModel.PostOfficeShortNM"
+                                   placeholder="Post Office Short Name"
+                                   validation-field-required="true"
+                                   required
+                                   validation-only-alphabets="{message:'Please Post Office Short Name (Only A-Z)', value: true}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <ui-select ng-model="PostOfficeModel.UpazilaId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       required
+                                       id="UpazilaId">
+                                <ui-select-match placeholder="Select With Search">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in UpazilaForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="input-group" style="padding-left:15px;">
+                        <br />
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="PostOfficeForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="PostOfficeTable" ba-panel ba-panel-title="Post Office Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/PostOffice/PostOfficeTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+</div>
+<!--<pre id="uiRouterInfo">
+      $state = {{$state.current.name}}
+      $stateParams = {{$stateParams}}
+      $state full url = {{ $state.$current.url.source }}    
+</pre>-->

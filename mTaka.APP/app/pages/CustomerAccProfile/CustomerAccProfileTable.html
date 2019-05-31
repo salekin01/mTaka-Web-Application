@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Cus Id</td>
+            <td>Name</td>
+            <td>Wallet Account No </td>
+            <td>Date Of Birth</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in CusList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.AccountProfileId}} </span></td>
+            <td><span> {{item.UserName}} </span></td>
+            <td><span> {{item.WalletAccountNo}} </span></td>
+            <td><span> {{item.DOB | date:'MMMM dd, yyyy'}} </span></td>
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeCustomer($index)">Change</button>
+                    <!--<button type="button" class="btn btn-primary editable-table-button btn-xs">View</button>-->
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteCus($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

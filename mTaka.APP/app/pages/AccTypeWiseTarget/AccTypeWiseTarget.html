@@ -1,0 +1,175 @@
+﻿<div>
+    <form name="AccTypeWiseTargetForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Account Type Wise Target Setup" ba-panel-class="with-scroll">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" title="Account Type Wise Target ID" class="form-control" id="TargetSlNo" ng-model="AccTypeWiseTargetModel.TargetSlNo" placeholder="Account Type Wise Target ID" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="AccTypeWiseTargetModel.AccCategoryId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       required
+                                       title="Account Category"
+                                       search-enabled="true"
+                                       id="AccCategoryId">
+                                <ui-select-match allow-clear="true" placeholder="Select Account Category">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in AccCategoryForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="AccTypeWiseTargetModel.AccTypeId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       required
+                                       title="Account Type"
+                                       id="AccTypeId">
+                                <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="AccTypeWiseTargetModel.DefineServiceId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       title="Service"
+                                       required
+                                       id="DefineServiceId">
+                                <ui-select-match allow-clear="true" placeholder="Select Service">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem1 in ServiceForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem1.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="AccTypeWiseTargetModel.CalenderPrdId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       title="Frequency"
+                                       required
+                                       id="CalenderPrdId">
+                                <ui-select-match allow-clear="true" placeholder="Select Frequency">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem1 in CalenderPeriodForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem1.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="AccTypeWiseTargetModel.District"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="District"
+                                       title="District"
+                                       required>
+                                <ui-select-match allow-clear="true" placeholder="Select District">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="AccTypeWiseTargetModel.Area"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="Area"
+                                       title="Area"
+                                       required>
+                                <ui-select-match allow-clear="true" placeholder="Select Area">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="AccTypeWiseTargetModel.TransTypeSlId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       title="Transaction Type"
+                                       required
+                                       id="TransTypeSlId">
+                                <ui-select-match allow-clear="true" placeholder="Select Transaction Type">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem1 in TransTypeForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem1.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group" TextRequiredField ng-show="AccTypeWiseTargetModel.TransTypeSlId.Value == '001'">
+                            <input type="text" title="Amount" class="form-control" id="Amount"
+                                   ng-model="AccTypeWiseTargetModel.Amount"
+                                   placeholder="Amount" required>
+                        </div>
+                        <div class="input-group" TextRequiredField ng-show="AccTypeWiseTargetModel.TransTypeSlId.Value == '002'">
+                            <input type="text" title="No" class="form-control" id="Amount"
+                                   ng-model="AccTypeWiseTargetModel.Amount"
+                                   placeholder="NO" required>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="input-group" style="padding-left:15px;">
+                        <br />
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="AccTypeWiseTargetTable" ba-panel ba-panel-title="Account Type Wise Target Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/AccTypeWiseTarget/AccTypeWiseTargetTable.html"></div>
+                </div>
+            </div>
+        </div>    

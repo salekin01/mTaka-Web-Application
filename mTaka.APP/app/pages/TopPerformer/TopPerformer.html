@@ -1,0 +1,108 @@
+﻿<form name="TopPerformer" class="form-inline" ng-submit="ButtonSubmit();">
+    <div class="row">
+        <div ba-panel ba-panel-title="Top Performer" ba-panel-class="with-scroll">
+            <div class="col-md-3">
+                <div class="input-group TextRequiredField">
+                    <ui-select ng-model="TopPerformerModel.AccCategoryId"
+                               class="btn-group bootstrap-select form-control"
+                               ng-disabled="false"
+                               append-to-body="true"
+                               required
+                               title="Account Category"
+                               search-enabled="true"
+                               on-select="onSelected($item)"
+                               id="AccCategoryId">
+                        <ui-select-match allow-clear="true" placeholder="Select Account Category">
+                            {{$select.selected.Text}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="withSearchItem in AccCategoryForDD | filter: $select.search">
+                            <span ng-bind-html="withSearchItem.Text"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group TextRequiredField">
+                    <ui-select ng-model="TopPerformerModel.AccountTypeId"
+                               class="btn-group bootstrap-select form-control"
+                               ng-disabled="false"
+                               append-to-body="true"
+                               search-enabled="true"
+                               required
+                               title="Account Type"
+                               id="AccountTypeId">
+                        <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                            {{$select.selected.Text}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                            <span ng-bind-html="withSearchItem.Text"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <p class="input-group">
+                    <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Form</span>
+                    <input type="date"
+                           ng-model="TopPerformerModel.FromDate"
+                           id="FromDate"
+                           class="form-control"
+                           title="Start Date"
+                           placeholder="Form Date"
+                           value="0/0/0000"
+                           ng-disabled="TopPerformerModel.Today == true"
+                           uib-datepicker-popup="dd/MM/yyyy"
+                           is-open="dpOpenStatus.withRequired" />
+                    <span class="input-group-btn">
+                        <!--<button type="button"
+                class="btn btn-default"
+                ng-click="setDpOpenStatus('withRequired', $event)">
+            <i class="ion-ios-calendar-outline"></i>
+        </button>-->
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p class="input-group">
+                    <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">To</span>
+                    <input type="date"
+                           ng-model="TopPerformerModel.ToDate"
+                           id="ToDate"
+                           class="form-control"
+                           title="To Date"
+                           ng-disabled="TopPerformerModel.Today == true"
+                           placeholder="To Date"
+                           uib-datepicker-popup="dd/MM/yyyy"
+                           is-open="dpOpenStatusEnd.withRequired" />
+                    <span class="input-group-btn">
+                        <!--<button type="button"
+                class="btn btn-default"
+                ng-click="setDpOpenStatusEnd('withRequired', $event)">
+            <i class="ion-ios-calendar-outline"></i>
+        </button>-->
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="checkbox" name="Total Amount Of Transaction" id="TotalAmountOfTransaction" ng-model="TopPerformerModel.TotalAmountOfTransaction"> Total Amount of Transaction<br>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="checkbox" name="Total No Of Transaction" id="TotalNoOfTransaction" ng-model="TopPerformerModel.TotalNoOfTransaction"> Total No of Transaction<br>
+                </div>
+            </div>
+            <br />
+            <div class="input-group" style="padding-left:15px;">
+                <div class="input-group">
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="Submit()">Submit</button>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                </div>
+            </div>
+            <div id="TopPerformerTable" ba-panel ba-panel-title="Top Performer Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                <div include-with-scope="../../app/pages/TopPerformer/TopPerformerTable.html"></div>
+            </div>
+        </div>
+    </div>
+</form>

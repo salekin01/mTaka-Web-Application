@@ -1,0 +1,127 @@
+﻿<div>
+    <form name="CusTypeWiseServiceForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Account Type Wise Service" ba-panel-class="with-scroll">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="CusTypeWiseServiceId" ng-model="CusTypeWiseServiceModel.CusTypeWiseServiceId" placeholder="Account Type Wise Service Id" ng-disabled="true">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4" >
+                        <div class="input-group ">
+                            <ui-select ng-model="CusTypeWiseServiceModel.AccCategoryId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       title="Account Category"
+                                       required
+                                       on-select="onSelected($item)"
+                                       id="AccCategoryId">
+                                <ui-select-match allow-clear="true" placeholder="Select Account Category">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem1 in AccCategoryForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem1.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group ">
+                            <ui-select ng-model="CusTypeWiseServiceModel.AccTypeId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       required
+                                       title="Account Type"
+                                       id="AccountTypeId">
+                                <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in AccountTypeForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <!--Service-->
+                    <div class="col-md-4">
+                        <div class="input-group ">
+                            <ui-select ng-model="CusTypeWiseServiceModel.DefineServiceArray"
+                                       class="btn-group bootstrap-select form-control"
+                                       multiple
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       required
+                                       id="DefineServiceArray">
+                                <ui-select-match allow-clear="true" placeholder="Select Account Service">
+                                    {{$item.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="DefineServiceArray in AccountServiceForDD | filter: $select.search">
+                                    <span ng-bind-html="DefineServiceArray.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <!--<p>Selected: {{CusTypeWiseServiceModel.DefineServiceArray}}</p>-->
+                        </div>
+                    </div>
+
+
+                    <!--<div class="col-md-4">
+                        <div class="input-group">
+                            <select class="form-control" ng-options="user.Text for user in AccountTypeForDD" ng-model="CusTypeWiseServiceModel.AccountServiceId" multiple selectpicker>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>-->
+
+                        <!--<div class="form-group">
+            <select class="form-control" title="Multiple Select" multiple selectpicker
+                    ng-model="CusTypeWiseServiceModel.AccountServiceId"
+                    ng-options="AccountServiceId for AccountServiceId in AccountTypeForDD">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+            </select>
+        </div>-->
+
+
+
+
+
+
+
+
+                    <div class="input-group" style="padding-left:15px;">
+                        <div class="input-group" ng-if="SubmitBtn==='Add'">
+                            <br />
+                            <button type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                        <div class="input-group" ng-if="SubmitBtn==='Update'">
+                            <br />
+                            <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="CusTypeWiseServiceTable" ba-panel ba-panel-title="Account Type Wise Service Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/CusTypeWiseService/CusTypeWiseServiceTable.html"></div>
+                </div>
+            </div>
+        </div>
+        <label id="Action" ng-model="CusTypeWiseServicemodel.Action" value="Account Type Wise Service" />
+    </form>
+</div>

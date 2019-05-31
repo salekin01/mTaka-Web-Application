@@ -1,0 +1,236 @@
+﻿<div>
+    <form name="GLChartForm" class="form-inline" ng-submit="addData();" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="GL Chart Entry/Edit" ba-panel-class="with-scroll">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="GLChartSL" ng-model="GLChartModel.GLAccSl" placeholder="GL Key [Auto]" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="GLChartModel.GLType"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="GLType"
+                                           on-select="onSelected($item)"
+                                           required>
+                                    <ui-select-match placeholder="Select GL Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in GLTypeForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="GLPrefix" ng-model="GLChartModel.GLPrefix" title="GL Prefix" placeholder="GL Prefix"
+                                       ng-disabled="true" required>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="GLAccNo" ng-model="GLChartModel.GLAccNo" title="GL Account No"
+                                       placeholder="GL Account No"
+                                       required
+                                       validation-max-length="8"
+                                       validation-min-length="8"
+                                       validation-only-numbers="{message:'Only Number', value: true}"
+                                       ng-blur="checkAccNoAvailable()">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="GLAccName" ng-model="GLChartModel.GLAccName" title="GL Account Name"
+                                       placeholder="GL Account Name"
+                                       validation-field-required="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text"
+                                       id="OpeningDate" ng-model="GLChartModel.OpeningDate"
+                                       class="form-control"
+                                       title="Opening Date"
+                                       placeholder="Opening Date"
+                                       uib-datepicker-popup="dd/MM/yyyy"
+                                       is-open="dpOpenStatus.withRequired" />
+                                <span class="input-group-btn">
+                                    <button type="button"
+                                            class="btn btn-default"
+                                            ng-click="setDpOpenStatus('withRequired', $event)">
+                                        <i class="ion-ios-calendar-outline"></i>
+                                    </button>
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="GLChartModel.GLCurrencyId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="GLCurrencyId" 
+                                           required>
+                                    <ui-select-match placeholder="Select Currency">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in CurrencyForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label for="GLCurrencyId">Account Type</label>
+                        </div>
+                        <br />
+                        <div class="col-md-2">
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" name="AccType" id="GLAccType" ng-model="GLChartModel.GLAccType" value="D">
+                                <span>Debit</span>
+                            </label>
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" name="AccType" id="GLAccType1" ng-model="GLChartModel.GLAccType"  value="C">
+                                <span>Credit</span>
+                            </label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="GLChartModel.GLLevel"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="GLLevel"
+                                           required
+                                           on-select="onLevelSelected($item)">
+                                    <ui-select-match placeholder="Select GL Level">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in LevelForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label for="GLCurrencyId">Account Posting</label>
+                        </div>
+                        <br />
+                        <div class="col-md-6">
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" name="AccPosting" id="Postable" ng-model="GLChartModel.Postable" value="1">
+                                <span>Posting</span>
+                            </label>
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" name="AccPosting" id="Postable1" ng-model="GLChartModel.Postable" value="0">
+                                <span>Non-posting</span>
+                            </label>
+                        </div>
+                       
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="GLChartModel.TotalingAccSl"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="TotalingAccSl">
+                                    <ui-select-match placeholder="Select Totaling Account">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in TotalingAccForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label for="GLCurrencyId">Balance Sheet Item</label>
+                        </div>
+                        <br />
+                        <div class="col-md-6">
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" name="BalanceSheet" id="OffBSFlag" ng-model="GLChartModel.OffBSFlag" value="1" >
+                                <span>Balance Sheet</span>
+                            </label>
+                            <label class="radio-inline custom-radio nowrap">
+                                <input type="radio" name="BalanceSheet" id="OffBSFlag1" ng-model="GLChartModel.OffBSFlag" value="0">
+                                <span>Off Balance Sheet</span>
+                            </label>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <ui-select ng-model="GLChartModel.StatementCycle"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="StatementCycle"
+                                           required>
+                                    <ui-select-match placeholder="Select With Search">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in StatementCycleForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group" ng-if="SubmitBtn==='Add'">
+                        <br />
+                        <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="GLChartForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                    <div class="input-group" ng-if="SubmitBtn==='Update'">
+                        <br />
+                        <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="GLChartForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="GLChartTable" ba-panel ba-panel-title="GL Chart Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/GLChart/GLChartTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

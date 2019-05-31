@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> -mTaka</title>
+
+</head>
+<body>
+
+    <link href="LoginStyle.css" rel="stylesheet" />
+    <script src="../Scripts/jquery.js"></script>
+    <script src="../Scripts/loginAnimation.js"></script>
+
+    <!-- bower:css -->
+
+    <link href="ionicons.css" rel="stylesheet" />
+    <link href="angular-toastr.css" rel="stylesheet" />
+    <link href="animate.css" rel="stylesheet" />
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-select.css" rel="stylesheet" />
+    <link href="bootstrap-switch.css" rel="stylesheet" />
+    <link href="bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="font-awesome.css" rel="stylesheet" />
+    <link href="fullcalendar.css" rel="stylesheet" />
+    <link href="leaflet.css" rel="stylesheet" />
+    <link href="angular-progress-button-styles.min.css" rel="stylesheet" />
+    <link href="chartist.min.css" rel="stylesheet" />
+    <link href="morris.css" rel="stylesheet" />
+    <link href="ion.rangeSlider.css" rel="stylesheet" />
+    <link href="ion.rangeSlider.skinFlat.css" rel="stylesheet" />
+    <link href="textAngular.css" rel="stylesheet" />
+    <link href="xeditable.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="select.css" rel="stylesheet" />
+    <!-- endbower -->
+  
+    <link href="../app/auth.css" rel="stylesheet" />
+
+    <main class="auth-main">
+
+        <div class="container">
+            <div class="login-container">
+                <div id="output"></div>
+                <div class="avatar"></div>
+                <div class="form-box">
+                    <form class="form-horizontal" action="/Home/Login" method="post">
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Username" style="background :  #2A4E5A">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" style="background :  #2A4E5A">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-info btn-block login" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="particles-js"></div>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>-->
+</body>
+</html>

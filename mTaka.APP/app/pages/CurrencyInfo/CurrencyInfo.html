@@ -1,0 +1,96 @@
+﻿<div>
+    <form name="CurrencyInfoForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Currency Info" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group ">
+                                <input type="text" class="form-control" id="CurrencyId" ng-model="CurrencyInfoModel.CurrencyId"
+                                       title="Currency Id" placeholder="Currency Id" ng-disabled="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="CurrencyNm" ng-model="CurrencyInfoModel.CurrencyNm"
+                                       validation-only-alphabets="true" title="Currency Name" placeholder="Currency Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="CurrencyShortNm" title="Currency Short Name"
+                                       validation-only-alphabets="true" ng-model="CurrencyInfoModel.CurrencyShortNm" 
+                                       placeholder="Currency Short Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="CurrencyReportNm" title="Currency Report Name"
+                                       validation-only-alphabets="true" ng-model="CurrencyInfoModel.CurrencyReportNm" 
+                                       placeholder="Currency Report Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control TextRequiredField" id="CurrencyDecimalNm" title="Currency Decimal Name"
+                                       validation-only-alphabets="true" ng-model="CurrencyInfoModel.CurrencyDecimalNm" 
+                                       placeholder="Currency Decimal Name" required>
+                                <span class="help-block error-block basic-block ">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="CBCode" ng-model="CurrencyInfoModel.CBCode"
+                                       title="CB Code" placeholder="CB Code">
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="InternationalName" title="International Name"
+                                       ng-model="CurrencyInfoModel.InternationalName" placeholder="International Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="LocalVariable" title="Local Variable"
+                                       ng-model="CurrencyInfoModel.LocalVariable" placeholder="Local Variable">
+                            </div>
+                        </div>
+                    </div>              
+                    <br />
+                    <div class="input-group" style="padding-left:15px;">
+                        <div class="input-group" ng-if="SubmitBtn==='Add'">
+                            <br />
+                            <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                        <div class="input-group" ng-if="SubmitBtn==='Update'">
+                            <br />
+                            <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="CurrencyInfoTable" ba-panel ba-panel-title="Currency Info Table" ba-panel-class="with-scroll" 
+                     ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/CurrencyInfo/CurrencyInfoTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

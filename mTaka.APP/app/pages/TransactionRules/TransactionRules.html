@@ -1,0 +1,137 @@
+﻿<div>
+    <form name="TransactionRulesForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Transaction Rule" ba-panel-class="with-scroll">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="TransactionRuleId" ng-model="TransactionRulesModel.TransactionRuleId" placeholder="Transaction Type Id" ng-disabled="true">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group ">
+                            <ui-select ng-model="TransactionRulesModel.AccountType1"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       required
+                                       search-enabled="true"
+                                       id="AccountType1">
+                                <ui-select-match allow-clear="true" placeholder="Select Account Type 1">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in AccType1ForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group ">
+                            <ui-select ng-model="TransactionRulesModel.AccountType2"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       required
+                                       search-enabled="true"
+                                       id="AccountType2">
+                                <ui-select-match allow-clear="true" placeholder="Select Account Type 2">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in AccType2ForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group ">
+                            <ui-select ng-model="TransactionRulesModel.DefineServiceId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       required
+                                       search-enabled="true"
+                                       id="DefineServiceId">
+                                <ui-select-match allow-clear="true" placeholder="Select Service">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in DefineServiceForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="col-md-2"><p>Commission Allowed</p></div>
+                        <div class="col-md-2"><ba-switcher switcher-style="primary" id="commissionAllowed" switcher-value="TransactionRulesModel.commissionAllowed" ng-model="TransactionRulesModel.commissionAllowed"> </ba-switcher></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-2"><p>Tranaction Allowed</p></div>
+                        <div class="col-md-2"><ba-switcher switcher-style="primary" id="TranactionAllowed" switcher-value="TransactionRulesModel.TranactionAllowed" ng-model="TransactionRulesModel.TranactionAllowed"></ba-switcher></div>
+                    </div>
+
+                    <!--<div class="col-md-4">
+        <div class="input-group ">
+            <ui-select ng-model="TransactionRulesModel.commissionAllowed"
+                       class="btn-group bootstrap-select form-control"
+                       ng-disabled="false"
+                       append-to-body="true"
+                       required
+                       search-enabled="true"
+                       id="commissionAllowed">
+                <ui-select-match allow-clear="true" placeholder="Commission">
+                    {{$select.selected.Text}}
+                </ui-select-match>
+                <ui-select-choices repeat="withSearchItem in CommissionForDD | filter: $select.search">
+                    <span ng-bind-html="withSearchItem.Text"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="input-group ">
+            <ui-select ng-model="TransactionRulesModel.TranactionAllowed"
+                       class="btn-group bootstrap-select form-control"
+                       ng-disabled="false"
+                       append-to-body="true"
+                       required
+                       search-enabled="true"
+                       id="TranactionAllowed">
+                <ui-select-match allow-clear="true" placeholder="Tranaction">
+                    {{$select.selected.Text}}
+                </ui-select-match>
+                <ui-select-choices repeat="withSearchItem in TranactionForDD | filter: $select.search">
+                    <span ng-bind-html="withSearchItem.Text"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>-->
+
+
+                    <br />
+                    <div class="input-group" style="padding-left:15px;">
+                        <br />
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="TransactionRulesForm.$invalid">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="TransactionRulesTable" ba-panel ba-panel-title="Transaction Rules Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/TransactionRules/TransactionRulesTable.html"></div>
+                </div>
+            </div>
+        </div>
+        <label id="Action" ng-model="TransactionRulesmodel.Action" value="Account Type" />
+    </form>
+</div>

@@ -1,0 +1,55 @@
+﻿<html ng-app="mTaka">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ImageUploadMultiple</title>
+    <link href="../../theme/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../theme/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div ng-controller="FileUploadCtrl">
+
+        <div class="col-md-12" style="text-align:center;margin-bottom:10px;">
+            <input type="file" id="file" name="file" multiple onchange="angular.element(this).scope().setFile(this)" accept="all/*" class="btn btn-default-focus" />
+        </div>
+
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Upload Table" ba-panel-class="with-scroll">
+                    <table class="table table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr class="primary">
+                                <th>File Name</th>
+                                <th>File Type</th>
+                                <th>File Size</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="file in fileList">
+
+                                <td>{{file.file.name}}</td>
+                                <td>{{file.file.type}}</td>
+                                <td>{{file.file.size}} KB</td>
+                                <td>
+                                    <div id="{{'P'+$index}}">
+
+                                    </div>
+                                </td>
+                                <td><button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="remove(fileList, $index)">Remove</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <button ng-click="UploadFile()" class="btn btn-primary">Upload</button>
+                    <button ng-click="Clear()" class="btn btn-primary">Clear</button>
+                </div>
+            </div>
+    </div>
+    <!-- Loading JQuery-->
+    <script src="../../../Scripts/bootstrap.min.js"></script>
+    <script src="../../../Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="../../../Scripts/jquery-1.7.2.min.js"></script>
+    <script src="../../../Scripts/angular.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿<form name="AccCategoryForm" class="form-inline" ng-submit="adddata();" >
+
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel
+                 ba-panel-title="Account Category"
+                 ba-panel-class="with-scroll">
+
+
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="AccCategoryId" ng-model="AccCategoryModel.AccCategoryId" placeholder="Account Category ID" ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input name="AccCategoryNm"
+                               type="text"
+                               class="form-control"
+                               id="AccCategoryNm"
+                               required
+                               ng-model="AccCategoryModel.AccCategoryNm"
+                               placeholder="Account Category Name"
+                               validation-field-required="true"
+                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                    </div>
+                </div>
+
+                    <br />
+
+                    <div class="input-group" style="padding-left:15px;">
+                        <div class="input-group" ng-if="SubmitBtn==='Add'">
+                            <br />
+                            <button has-permission='Create' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                        <div class="input-group" ng-if="SubmitBtn==='Update'">
+                            <br />
+                            <button has-permission='Edit' type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="groupTable" ba-panel ba-panel-title="Account Category Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                <div include-with-scope="../../app/pages/AccCategory/AccCategoryTable.html"></div>
+            </div>
+        </div>
+    </div>
+
+</form>

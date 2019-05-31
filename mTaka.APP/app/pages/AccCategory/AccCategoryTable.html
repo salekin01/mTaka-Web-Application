@@ -1,0 +1,26 @@
+﻿
+<table class="table table-bordered table-hover table-condensed">
+
+    <tr>
+        <td>#</td>
+        <td>Category ID</td>
+        <td>Category Name</td>
+        <td>Action</td>
+    </tr>
+
+
+    <tr ng-repeat="item in AccCategory ">
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.AccCategoryId}} </span></td>
+        <td><span> {{item.AccCategoryNm}} </span></td>
+        <td>
+            <span>
+                <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeAccCategory($index)">Change</button>
+
+                <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteAccCategory($index)">Delete</button>
+            </span>
+        </td>
+
+    </tr>
+
+</table>

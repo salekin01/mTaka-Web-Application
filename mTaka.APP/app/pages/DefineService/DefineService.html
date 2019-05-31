@@ -1,0 +1,42 @@
+﻿<form name="DefineService" class="form-inline" ng-submit="addData();">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Define Service" ba-panel-class="with-scroll">
+                <div class="col-md-4">
+                    <div class="input-group ">
+                        <input type="text" class="form-control" id="DefineServiceId" ng-model="NewDefineService.DefineServiceId"
+                               title="Define Service ID" placeholder="Define Service ID" ng-disabled="true">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control TextRequiredField" validation-only-alphabets="true" title="Define Service Name"
+                               id="DefineServiceNm" ng-model="NewDefineService.DefineServiceNm" placeholder="Define Service Name" required>
+                        <span class="help-block error-block basic-block ">Required</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control TextRequiredField" id="FunctionIdForDefineService" validation-no-space="true" title="Function Id"
+                               validation-only-numbers="true" ng-model="NewDefineService.FunctionIdForDefineService" placeholder="Function Id" required>
+                        <span class="help-block error-block basic-block ">Required</span>
+                    </div>
+                </div>  
+                <br />
+                <div class="input-group" style="padding-left:15px;">
+                    <br />
+                    <button type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                    <span> </span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="groupTable" ba-panel ba-panel-title="Define Service Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                <div include-with-scope="../../app/pages/DefineService/DefineServiceTable.html"></div>
+            </div>
+        </div>
+    </div>
+</form>

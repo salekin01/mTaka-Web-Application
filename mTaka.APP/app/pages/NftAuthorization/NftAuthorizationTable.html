@@ -1,0 +1,87 @@
+﻿<!--<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <td><span><input type="checkbox" ng-click="toggleAll()" ng-model="AuthLogModel.checkAll"></span></td>
+        <td>#</td>
+        <td>Log Id</td>
+        <td>Maximum Auth Level</td>
+        <td>Pending Auth Level</td>
+        <td>Make By</td>
+        <td>Make Date</td>
+        <td>Action</td>
+    </tr>
+    <tr ng-repeat="item in AuthLogModel.AuthLogList">
+        <td><span><input type="checkbox" checklist-model="AuthLogModel.SelectedAuthLogIdList" checklist-value="item.LogId" ng-required="AuthLogModel.SelectedAuthLogIdList.length == null || AuthLogModel.SelectedAuthLogIdList.length == '0'"></span></td>
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.LogId}} </span></td>
+        <td><span> {{item.AuthLevelMax}} </span></td>
+        <td><span> {{item.AuthLevelPending}} </span></td>
+        <td><span> {{item.MakeBy}} </span></td>
+        <td><span> {{item.MakeDT}} </span></td>
+        <td><span><button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ShowDetails($index)">Details</button></span></td>
+    </tr>
+</table>-->
+
+
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>
+            Rows on page
+            <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                    ng-model="AuthLogModel.smartTablePageSize" ng-options="i for i in [5,10,25,50,100]"></select>
+        </label>
+    </div>
+    <!--<table class="table" st-safe-src="AuthLogModel.rowCollection" st-table="AuthLogModel.AuthLogList">-->
+    <table class="table table-responsive table-striped" st-safe-src="AuthLogModel.RowCollection" st-table="AuthLogModel.AuthLogList" >
+        <thead>
+            <tr class="sortable">
+                <th><span><input type="checkbox" ng-click="toggleAll()" ng-model="AuthLogModel.checkAll"></span></th>
+                <th ng-hide="true">#</th>
+                <th class="table-id" st-sort="LogId" st-sort-default="false">Log Id</th>
+                <th st-sort="AuthLevelMax">Maximum Auth Level</th>
+                <th st-sort="AuthLevelPending">Pending Auth Level</th>
+                <th st-sort="MakeBy">Make By</th>
+                <th st-sort="MakeDT">Make Date</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <input st-search="LogId" placeholder="Search Log Id" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="AuthLevelMax" placeholder="Search Maximum Auth Level" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="AuthLevelPending" placeholder="Search Pending Auth Level" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="MakeBy" placeholder="Search Make By" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th>
+                    <input st-search="MakeDT" placeholder="Search Make Date" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in AuthLogModel.AuthLogList">
+                <td><span><input type="checkbox" checklist-model="AuthLogModel.SelectedAuthLogIdList" checklist-value="item.LogId" ng-required="AuthLogModel.SelectedAuthLogIdList.length == null || AuthLogModel.SelectedAuthLogIdList.length == '0'"></span></td>
+                <!--<td class="table-id">{{$index + 1}}</td>-->
+                <td ng-hide="true">{{$index + 1}}</td>
+                <td class="table-id">{{item.LogId}}</td>
+                <td>{{item.AuthLevelMax}}</td>
+                <td>{{item.AuthLevelPending}}</td>
+                <td>{{item.MakeBy}}</td>
+                <td>{{item.MakeDT | date : "medium" }}</td>
+                <td><span><button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ShowDetails($index)">Details</button></span></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" class="text-center">
+                    <div st-pagination="" st-items-by-page="AuthLogModel.smartTablePageSize" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

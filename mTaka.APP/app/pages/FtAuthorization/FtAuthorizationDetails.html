@@ -1,0 +1,18 @@
+﻿<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <td>#</td>
+        <td>Log Id</td>
+        <td>Log Child Id</td>
+        <td>Property Name</td>
+        <td>Old Value</td>
+        <td>New Value</td>
+    </tr>
+    <tr ng-repeat="item in AuthLogModel.AuthLogDetailsList">
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.LogId}} </span></td>
+        <td><span> {{item.LogChildId}} </span></td>
+        <td><span> {{item.DisplayTableColNm}} </span></td>
+        <td><span> {{item.OldValue}} </span></td>
+        <td><span> {{item.NewValue}} </span></td>
+    </tr>
+</table>

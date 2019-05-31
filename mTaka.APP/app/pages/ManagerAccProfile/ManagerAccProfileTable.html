@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Manager Name</td>
+            <td>Manager Type</td>
+            <!--<td>Wallet Account No.</td>-->
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in ManList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.ManNm}} </span></td>
+            <td><span> {{item.ManagerTypeNm}} </span></td>
+            <!--<td><span> {{item.WalletAccountNo}} </span></td>-->
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeManager($index)">Change</button>
+                    <!--<button type="button" class="btn btn-default-focus editable-table-button btn-xs" ng-click="ViewManager($index)">View</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

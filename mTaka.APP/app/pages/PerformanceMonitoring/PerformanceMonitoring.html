@@ -1,0 +1,173 @@
+﻿<form name="PerformanceForm" class="form-inline" ng-submit="ButtonSubmit();">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="input-group TextRequiredField">
+                <ui-select ng-model="PerformanceModel.AccCategoryId"
+                           class="btn-group bootstrap-select form-control"
+                           ng-disabled="false"
+                           append-to-body="true"
+                           required
+                           title="Account Category"
+                           search-enabled="true"
+                           on-select="onSelected($item)"
+                           id="AccCategoryId">
+                    <ui-select-match allow-clear="true" placeholder="Select Account Category">
+                        {{$select.selected.Text}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="withSearchItem in AccCategoryForDD | filter: $select.search">
+                        <span ng-bind-html="withSearchItem.Text"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group TextRequiredField">
+                <ui-select ng-model="PerformanceModel.AccTypeId"
+                           class="btn-group bootstrap-select form-control"
+                           ng-disabled="false"
+                           append-to-body="true"
+                           search-enabled="true"
+                           required
+                           title="Account Type"
+                           id="AccTypeId">
+                    <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                        {{$select.selected.Text}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                        <span ng-bind-html="withSearchItem.Text"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group TextRequiredField">
+                <ui-select ng-model="PerformanceModel.DefineServiceId"
+                           class="btn-group bootstrap-select form-control"
+                           ng-disabled="false"
+                           append-to-body="true"
+                           search-enabled="true"
+                           title="Service"
+                           required
+                           id="DefineServiceId">
+                    <ui-select-match allow-clear="true" placeholder="Select Service">
+                        {{$select.selected.Text}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="withSearchItem1 in ServiceForDD | filter: $select.search">
+                        <span ng-bind-html="withSearchItem1.Text"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group TextRequiredField">
+                <ui-select ng-model="PerformanceModel.District"
+                           class="btn-group bootstrap-select form-control"
+                           ng-disabled="false"
+                           append-to-body="true"
+                           search-enabled="true"
+                           id="District"
+                           title="District"
+                           required>
+                    <ui-select-match allow-clear="true" placeholder="Select District">
+                        {{$select.selected.Text}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                        <span ng-bind-html="withSearchItem.Text"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group TextRequiredField">
+                <ui-select ng-model="PerformanceModel.Area"
+                           class="btn-group bootstrap-select form-control"
+                           ng-disabled="false"
+                           append-to-body="true"
+                           search-enabled="true"
+                           id="Area"
+                           title="Area"
+                           required>
+                    <ui-select-match allow-clear="true" placeholder="Select Area">
+                        {{$select.selected.Text}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                        <span ng-bind-html="withSearchItem.Text"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group TextRequiredField">
+                <ui-select ng-model="PerformanceModel.CalenderPrdId"
+                           class="btn-group bootstrap-select form-control"
+                           ng-disabled="false"
+                           append-to-body="true"
+                           search-enabled="true"
+                           title="Frequency"
+                           required
+                           id="CalenderPrdId">
+                    <ui-select-match allow-clear="true" placeholder="Select Frequency">
+                        {{$select.selected.Text}}
+                    </ui-select-match>
+                    <ui-select-choices repeat="withSearchItem1 in CalenderPeriodForDD | filter: $select.search">
+                        <span ng-bind-html="withSearchItem1.Text"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="col-md-4" style="z-index:1" ng-show="PerformanceModel.CalenderPrdId.Value=='M'">
+            <p class="input-group">
+                <input type="text"
+                       ng-model="PerformanceModel.FormDate"
+                       id="FormDate"
+                       class="form-control"
+                       title="Start Date"
+                       placeholder="Start Date"
+                       uib-datepicker-popup="dd/MM/yyyy"
+                       is-open="dpOpenStatus.withRequired" />
+                <span class="input-group-btn">
+                    <button type="button"
+                            class="btn btn-default"
+                            ng-click="setDpOpenStatus('withRequired', $event)">
+                        <i class="ion-ios-calendar-outline"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <div class="col-md-4" style="z-index:1" ng-show="PerformanceModel.CalenderPrdId.Value=='M'">
+            <p class="input-group">
+                <input type="text"
+                       ng-model="PerformanceModel.ToDate"
+                       id="ToDate"
+                       class="form-control"
+                       title="End Date"
+                       placeholder="End Date"
+                       uib-datepicker-popup="dd/MM/yyyy"
+                       is-open="dpOpenStatusEnd.withRequired" />
+                <span class="input-group-btn">
+                    <button type="button"
+                            class="btn btn-default"
+                            ng-click="setDpOpenStatusEnd('withRequired', $event)">
+                        <i class="ion-ios-calendar-outline"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+    <br /><br />
+          <div class="row">
+              <div id="zoomAxisChart" class="admin-chart" ng-controller="PerformanceMonitoringCtrl"></div>
+          </div>
+    <!--<div class="row">
+
+        <div class="col-md-6">
+            <div ba-panel ba-panel-title="Top 10" ba-panal-class="with-scroll"></div>
+        </div>
+        <div class="col-md-6">
+            <div ba-panel ba-panel-title="Lowest 10" ba-panal-class="with-scroll"></div>
+        </div>
+
+    </div>-->
+</form>

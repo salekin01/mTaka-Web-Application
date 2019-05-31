@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Transaction Template Id</td>
+            <td>Define Service</td>
+            <td>Source of Account</td>
+            <td>Type of Account</td>
+            <td>Account Type</td>
+            <td>GL Account SL</td>
+            <td>Debit Or Credit</td>
+            <td>Narration</td>
+            <!--<td>Charge Rule</td>-->
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in TransactionTemplateList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.TransactionTemplateId}} </span></td>
+            <td><span> {{item.DefineServiceName}} </span></td>
+            <td><span> {{item.SourceofAccountName}} </span></td>
+            <td><span> {{item.TypeofAccountName}} </span></td>
+            <td><span> {{item.AccountTypeName}} </span></td>
+            <td><span> {{item.GLAccSl}} </span></td>
+            <td><span> {{item.DebitOrCredit}} </span></td>
+            <td><span> {{item.Narration}} </span></td>
+            <!--<td><span> {{item.ChargeRuleName}} </span></td>-->
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeTransactionTemplate($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteTransactionTemplate($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

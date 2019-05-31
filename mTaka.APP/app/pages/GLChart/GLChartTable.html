@@ -1,0 +1,84 @@
+﻿
+<!--<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>GL Acc SL</td>
+            <td>GL Acc No</td>
+            <td>GL Acc Name</td>
+            <td>GL Prefix</td>
+            <td>GL Type</td>
+            <td>GL Acc Type</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in GLCartList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.GLAccSl}} </span></td>
+            <td><span> {{item.GLAccNo}} </span></td>
+            <td><span> {{item.GLAccName}} </span></td>
+            <td><span> {{item.GLPrefix}} </span></td>
+            <td><span> {{item.GLType}} </span></td>
+            <td><span> {{item.GLAccType}} </span></td>
+            <td>
+                <span>
+                    <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeGLChart($index)">Change</button>
+                    <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteGLChart($index)">Delete</button>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>-->
+
+
+
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>
+            Rows on page
+            <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                    ng-model="GLChartModel.smartTablePageSize" ng-options="i for i in [5,10,25,50,100]"></select>
+        </label>
+    </div>
+    <!--<table class="table" st-safe-src="AuthLogModel.rowCollection" st-table="AuthLogModel.AuthLogList">-->
+    <table class="table table-responsive table-striped" st-safe-src="RowCollection" st-table="GLCartList">
+        <thead>
+            <tr class="sortable">
+                <th ng-hide="true">#</th>
+                <th class="table-id" st-sort="GLAccSl" st-sort-default="false">GL Acc SL</th>
+                <th st-sort="GLAccNo">GL Acc No</th>
+                <th st-sort="GLAccName">GL Acc Name</th>
+                <th st-sort="GLPrefix">GL Prefix</th>
+                <th st-sort="GLType">GL Type</th>
+                <th st-sort="GLAccType">GL Acc Type</th>
+                <th>Action</th>
+                
+            </tr>
+            
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in GLCartList">
+                <td ng-hide="true">{{$index + 1}}</td>
+                <td class="table-id"><span> {{item.GLAccSl}} </span></td>
+                <td><span> {{item.GLAccNo}} </span></td>
+                <td><span> {{item.GLAccName}} </span></td>
+                <td><span> {{item.GLPrefix}} </span></td>
+                <td><span> {{item.GLType}} </span></td>
+                <td><span> {{item.GLAccType}} </span></td>
+                <td>
+                    <span>
+                        <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeGLChart($index)">Change</button>
+                        <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteGLChart($index)">Delete</button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8" class="text-center">
+                    <div st-pagination="" st-items-by-page="GLChartModel.smartTablePageSize" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

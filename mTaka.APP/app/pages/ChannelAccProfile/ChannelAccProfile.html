@@ -1,0 +1,585 @@
+﻿<div>
+    <form name="ChannelAccProfileForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="" ba-panel-class="with-scroll">
+                    <ba-wizard>
+                        <ba-wizard-step title="Channel Member Information">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group ">
+                                        <input type="text" title="Account Profile Id" class="form-control"
+                                               id="AccountProfileId" ng-model="ChannelAccProfileModel.AccountProfileId"
+                                               placeholder="Account Profile Id" ng-disabled="true">
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-4">
+                                    <div class="input-group TextRequiredField">
+                                        <ui-select ng-model="ChannelAccProfileModel.AccountCategoryId"
+                                                   title="Select Account Category"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="AccountCategoryId"
+                                                   required>
+                                            <ui-select-match allow-clear="true" placeholder="Select Account Category"> {{$select.selected.Text}} </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in AccCategoryForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>-->
+                                <div class="col-md-4">
+                                    <div class="input-group TextRequiredField">
+                                        <ui-select ng-model="ChannelAccProfileModel.AccountTypeId"
+                                                   title="Select Account Type"
+                                                   class="btn-group bootstrap-select form-control"                                                   
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="AccountTypeId"
+                                                   ng-disabled="ChannelAccProfileModel.dis"
+                                                   required>
+                                            <ui-select-match allow-clear="true" placeholder="Select Account Type">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group ">
+                                        <input type="text" title="Wallet Account No" validation-no-space="true"
+                                               validation-only-numbers="true" class="form-control TextRequiredField"
+                                               id="WalletAccountNo" placeholder="Wallet Account No." ng-model="ChannelAccProfileModel.WalletAccountNo" ng-disabled="ChannelAccProfileModel.dis">
+                                        <span class="help-block error-block basic-block ">Required</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">                                
+                                <div class="col-md-4">
+                                    <div class="input-group ">
+                                        <input type="text" title="User Name" class="form-control TextRequiredField"
+                                               validation-only-alphabets="true" id="UserName" placeholder="User Name"
+                                               ng-model="ChannelAccProfileModel.UserName" required>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Account Status" class="form-control"
+                                               id="AccountStatusId" placeholder="Account Status"
+                                               ng-model="ChannelAccProfileModel.AccountStatusId" ng-disabled="true">
+                                    </div>
+                                </div>-->
+                                <!--<div class="col-md-4">
+                                    <div class="input-group">
+                                        <ui-select ng-model="ChannelAccProfileModel.AccountStatusId"
+                                                   class="btn-group bootstrap-select form-control TextRequiredField"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="AccountStatusId"
+                                                   required>
+                                            <ui-select-match allow-clear="true" placeholder="Select Account Status">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in AccStatusSetupForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>-->
+                                <div class="col-md-4">
+                                    <!--<label for="DateofBirth">Date of Birth : {{ChannelAccProfileModel.DateofBirth | date:'fullDate' }}</label>
+                                    <div class="input-group">
+                                        <input type="date" title="Date of Birth" class="form-control"
+                                               ng-model='ChannelAccProfileModel.DateofBirth' ng-disabled="ChannelAccProfileModel.dis" id="DateofBirth" />
+                                    </div>-->
+                                    <div class="input-group">
+                                            <input type="text" id="DateofBirth" ng-model="ChannelAccProfileModel.DateofBirth" ng-disabled="ChannelAccProfileModel.dis"
+                                                   class="form-control" title="Date Of Birth" placeholder="Date Of Birth" uib-datepicker-popup="dd/MM/yyyy"
+                                                   is-open="dpOpenStatus.withRequired" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="setDpOpenStatus('withRequired', $event)">
+                                                    <i class="ion-ios-calendar-outline"></i>
+                                                </button>
+                                            </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Father Name" class="form-control" id="FatherNm"
+                                               validation-only-alphabets="true" placeholder="Father Name"
+                                               ng-model="ChannelAccProfileModel.FatherNm">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Mother's Name" class="form-control" id="MotherNm"
+                                               validation-only-alphabets="true" placeholder="Mother's Name"
+                                               ng-model="ChannelAccProfileModel.MotherNm">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Nationality Id" validation-no-space="true" validation-only-numbers="true"
+                                               class="form-control" id="NationalityId" placeholder="Nationality Id"
+                                               ng-model="ChannelAccProfileModel.NationalityId" ng-disabled="ChannelAccProfileModel.dis">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group ">
+                                        <ui-select ng-model="ChannelAccProfileModel.Gender"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="false"
+                                                   title="Gender"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="Gender">
+                                            <ui-select-match allow-clear="true" placeholder="Select Gender">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in GenderForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">                                
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="TAX Id No." validation-no-space="true" validation-only-numbers="true"
+                                               class="form-control" id="TAXIdNo" placeholder="TAX Id No."
+                                               ng-model="ChannelAccProfileModel.TAXIdNo">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Passport No." validation-no-space="true" validation-only-numbers="true"
+                                               class="form-control" id="PassportNo" placeholder="Passport No."
+                                               ng-model="ChannelAccProfileModel.PassportNo">
+                                    </div>
+                                </div>
+                            </div>
+                        </ba-wizard-step>
+
+                        <ba-wizard-step title="Address" form="productInfoForm">                            
+                            <div class="input-group " style="width:30%" title="Address Type">
+                                <ui-select ng-model="ChannelAccProfileModel.Address"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="Address">
+                                    <ui-select-match allow-clear="true" placeholder="Select Address Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in AddressForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="PresentAddress" ng-show="ChannelAccProfileModel.Address.Value == '001'">
+                                        <h5>Present Address</h5>
+                                        <div class="row">
+                                            <br />
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <input type="text" title="Present Address 1" class="form-control" id="PresentAddress1"
+                                                           placeholder="Present Address 1" ng-model="ChannelAccProfileModel.PresentAddress1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <input type="text" title="Present Address 2" class="form-control" id="PresentAddress2"
+                                                           placeholder="Present Address 2" ng-model="ChannelAccProfileModel.PresentAddress2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PresentCountryId"
+                                                               title="Select Country"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PresentCountryId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select Country"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in CountryInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PresentCityId"
+                                                               title="Select City"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PresentCityId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select City"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in CityInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PresentDistrictId"
+                                                               title="Select District"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PresentDistrictId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select District">
+                                                            {{$select.selected.Text}}
+                                                        </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PresentPoliceStationId"
+                                                               title="Select Police Station"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PresentPoliceStationId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select Police Station"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in PSInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PresentAreaId"
+                                                               title="Select Area"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PresentAreaId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select Area"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <!--<div class="col-md-3">
+                                                <div class="input-group">
+                                                    <input type="text" title="Phone No." validation-no-space="true" phone-number-validation="true"
+                                                           class="form-control" id="PresentPhoneNo" placeholder="Present Phone No."
+                                                           ng-model="ChannelAccProfileModel.PresentPhoneNo">
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="PermanentAddress" ng-show="ChannelAccProfileModel.Address.Value == '002'">
+                                        <h5>Permanent Address</h5>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <input type="text" title="Permanent Address 1" class="form-control" id="PermanentAddress1"
+                                                           placeholder="Permanent Address 1" ng-model="ChannelAccProfileModel.PermanentAddress1">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <input type="text" title="Permanent Address 2" class="form-control" id="PermanentAddress2"
+                                                           placeholder="Permanent Address 2" ng-model="ChannelAccProfileModel.PermanentAddress2">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PermanentCountryId"
+                                                               title="Select Country"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PermanentCountryId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select Country"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in CountryInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PermanentCityId"
+                                                               title="Select City"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PermanentCityId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select City"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in CityInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PermanentDistrictId"
+                                                               title="Select District"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PermanentDistrictId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select District"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PermanentPoliceStationId"
+                                                               title="Select Police Station"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PermanentPoliceStationId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select Police Station"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in PSInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="input-group">
+                                                    <ui-select ng-model="ChannelAccProfileModel.PermanentAreaId"
+                                                               title="Select Area"
+                                                               class="btn-group bootstrap-select form-control"
+                                                               append-to-body="true"
+                                                               search-enabled="true"
+                                                               id="PermanentAreaId">
+                                                        <ui-select-match allow-clear="true" placeholder="Select Area"> {{$select.selected.Text}} </ui-select-match>
+                                                        <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </div>
+                                            </div>
+                                            <!--<div class="col-md-3">
+                                                <div class="input-group">
+                                                    <input type="text" title="Phone No." validation-no-space="true" phone-number-validation="true"
+                                                           class="form-control" id="PermanentPhoneNo" placeholder="Permanent Phone No."
+                                                           ng-model="ChannelAccProfileModel.PermanentPhoneNo">
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                        <!--<div class="input-group">
+                                            <input type="checkbox" name="sameAsPeranent" id="sameAsPeranent" ng-model="ChannelAccProfileModel.sameAsPeranent"> Same As Present Address<br>
+                                        </div>-->
+                                        <br />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </ba-wizard-step>
+
+                        <ba-wizard-step title="Bank Information">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <ui-select ng-model="ChannelAccProfileModel.BankId"
+                                                   title="Select Bank"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="BankId">
+                                            <ui-select-match allow-clear="true" placeholder="Select Bank"> {{$select.selected.Text}} </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in BankInfoForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group ">
+                                        <ui-select ng-model="ChannelAccProfileModel.BranchId"
+                                                   title="Branch"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="BranchId">
+                                            <ui-select-match allow-clear="true" placeholder="Select Branch"> {{$select.selected.Text}} </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in BranchInfoForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Bank Account No." validation-no-space="true" validation-only-numbers="true"
+                                               class="form-control" id="BankAccountNo" placeholder="Bank Account No."
+                                               ng-model="ChannelAccProfileModel.BankAccountNo">
+                                    </div>
+                                </div>
+                            </div>
+                        </ba-wizard-step>
+
+                        <ba-wizard-step title="Parents Information">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <ui-select ng-model="ChannelAccProfileModel.ParentAccountTypeId"
+                                                   title="Select Parent Account Type"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ParentAccountTypeId">
+                                            <ui-select-match allow-clear="true" placeholder="Select Parent Account Type"> {{$select.selected.Text}} </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in AccTypeForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <ui-select ng-model="ChannelAccProfileModel.ParentAccountProfileId"
+                                                   title="Select Parent Channel Member"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ParentAccountProfileId">
+                                            <ui-select-match allow-clear="true" placeholder="Select Parent Channel Member"> {{$select.selected.Text}} </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ChannelAccProfileForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-4">
+                                    <div class="input-group">
+                                        <ui-select ng-model="ChannelAccProfileModel.ManagerTypeId"
+                                                   title="Select Manager Type"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManagerTypeId">
+                                            <ui-select-match allow-clear="true" placeholder="Select Manager Type"> {{$select.selected.Text}} </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManagerTypeForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>-->
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <ui-select ng-model="ChannelAccProfileModel.ManagerAccountProfileId"
+                                                   title="Select Manager"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManagerAccountProfileId">
+                                            <ui-select-match allow-clear="true" placeholder="Select Manager"> {{$select.selected.Text}} </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManagerForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </ba-wizard-step>
+
+                        <ba-wizard-step title="Business Information">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Company Name" class="form-control" id="CompanyNm"
+                                               placeholder="Company Name" ng-model="ChannelAccProfileModel.CompanyNm">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Occupation" class="form-control" id="Occupation"
+                                               placeholder="Occupation" ng-model="ChannelAccProfileModel.Occupation">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="National Id No." validation-no-space="true" validation-only-numbers="true"
+                                               class="form-control" id="NationalIdNo" placeholder="National Id No." ng-model="ChannelAccProfileModel.NationalIdNo"
+                                               ng-disabled="ChannelAccProfileModel.dis">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Vat Registration No." validation-no-space="true"
+                                               validation-only-numbers="true" class="form-control" id="VatRegistrationNo"
+                                               placeholder="Vat Registration No." ng-model="ChannelAccProfileModel.VatRegistrationNo">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" title="Trade License No." validation-no-space="true"
+                                               validation-only-numbers="true" class="form-control" id="TradeLicenseNo"
+                                               placeholder="Trade License No." ng-model="ChannelAccProfileModel.TradeLicenseNo">
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-4">
+                                    <div class="input-group has-feedback">
+                                        <br />
+                                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ChannelAccProfileForm.$invalid">{{SubmitBtn}}</button>
+                                        <span> </span>
+                                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ChannelAccProfileForm.$invalid" ng-click="ClearFields()">Clear</button>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </ba-wizard-step>
+                    </ba-wizard>
+                    <br />
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs"
+                                ng-disabled="ChannelAccProfileForm.$invalid">
+                            {{SubmitBtn}}
+                        </button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs"
+                                ng-click="ClearFields()">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="ChannelAccProfileTable" ba-panel ba-panel-title="Channel Member Info Table" ba-panel-class="with-scroll"
+                     ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/ChannelAccProfile/ChannelAccProfileTable.html"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,189 @@
+﻿<div>
+    <form name="SpecialOfferForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div ba-panel ba-panel-title="Special Offer" ba-panel-class="with-scroll">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Id</span>
+                            <input type="text" title="ID" class="form-control" id="OfferId" ng-model="SpecialOfferModel.OfferId" placeholder="ID" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Offer Name</span>
+                            <input type="text" title="Offer Name" class="form-control" id="OfferName" ng-model="SpecialOfferModel.OfferName" placeholder="Offer Name" ng-disabled="false" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="SpecialOfferModel.AccTypeId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       title="Customer Type"
+                                       required
+                                       id="AccTypeId">
+                                <ui-select-match allow-clear="true" placeholder="Select Customer Type">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem1 in CustomerTypeForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem1.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="SpecialOfferModel.DefineServiceId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       title="Service"
+                                       required
+                                       id="DefineServiceId">
+                                <ui-select-match allow-clear="true" placeholder="Select Service">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem1 in ServiceForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem1.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="SpecialOfferModel.DistrictId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="DistrictId"
+                                       title="District"
+                                       required>
+                                <ui-select-match allow-clear="true" placeholder="Select Area">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="SpecialOfferModel.RateTypeId"
+                                       class="btn-group bootstrap-select form-control"
+                                       ng-disabled="false"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="RateTypeId">
+                                <ui-select-match allow-clear="true" placeholder="Select Rate Type">
+                                    {{$select.selected.Text}}
+                                </ui-select-match>
+                                <ui-select-choices repeat="withSearchItem in ChargeRateTypeForDD | filter: $select.search">
+                                    <span ng-bind-html="withSearchItem.Text"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-md-4" ng-show="SpecialOfferModel.RateTypeId.Value=='2'">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Amount</span>
+                            <input type="text" class="form-control" id="RateAmount" ng-model="SpecialOfferModel.RateAmount" placeholder="Rate (Amount)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="input-group" ng-show="SpecialOfferModel.RateTypeId.Value=='1'">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Rate</span>
+                            <input type="text" class="form-control" id="RatePersent" ng-model="SpecialOfferModel.RatePersent" placeholder="Rate (%)">
+                            <span class="input-group-addon input-group-addon-primary addon-right" id="basic-addon1">%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4" ng-show="SpecialOfferModel.RateTypeId.Value=='1'">
+                        <div class="input-group ">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Min Amount</span>
+                            <input type="text" class="form-control" id="MinAmount" ng-model="SpecialOfferModel.MinAmount" placeholder="Min Charge">
+                        </div>
+                    </div>
+                    <div class="col-md-4" ng-show="SpecialOfferModel.RateTypeId.Value=='1'">
+                        <div class="input-group ">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Max Amount</span>
+                            <input type="text" class="form-control" id="MaxAmount" ng-model="SpecialOfferModel.MaxAmount" placeholder="Max Charge">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <p class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Form</span>
+                            <input type="date"
+                                   ng-model="SpecialOfferModel.StartDate"
+                                   id="FromDate"
+                                   class="form-control"
+                                   title="Start Date"
+                                   placeholder="Form Date"
+                                   value="0/0/0000"
+                                   uib-datepicker-popup="dd/MM/yyyy"
+                                   is-open="dpOpenStatus.withRequired" />
+                            <span class="input-group-btn">
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">To</span>
+                            <input type="date"
+                                   ng-model="SpecialOfferModel.EndDate"
+                                   id="ToDate"
+                                   class="form-control"
+                                   title="To Date"
+                                   placeholder="To Date"
+                                   uib-datepicker-popup="dd/MM/yyyy"
+                                   is-open="dpOpenStatusEnd.withRequired" />
+                            <span class="input-group-btn">
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">GL Account</span>
+                            <input type="text" class="form-control" placeholder="GL Account" title="GL Account" id="glAccount" ng-model="SpecialOfferModel.glAccount" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Set Message</span>
+                            <input type="text" class="form-control" placeholder="Ex: Get cash back 10/-" title="" id="offerMessage" ng-model="SpecialOfferModel.offerMessage" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <div class="input-group" style="padding-left:15px;">
+                        <br />
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                </div>
+
+            </div>
+            <!--<div class="col-md-12">-->
+                <div id="SpecialOfferTable" ba-panel ba-panel-title="Special Offers Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/SpecialOffer/SpecialOfferTable.html"></div>
+                </div>
+            <!--</div>-->
+        </div>
+    </form>
+</div>
+<div class="row">
+
+</div>

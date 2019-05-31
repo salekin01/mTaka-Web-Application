@@ -1,0 +1,91 @@
+﻿<div>
+    <form name="FundTransferForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Fund Transfer" ba-panel-class="with-scroll">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-group TextRequiredField">
+                                <ui-select ng-model="FundTransferModel.SelectDefineServiceId"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           id=" SelectDefineServiceId"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           title="Select Service"
+                                           on-select="GetBankAccInfoByWalletAccNo()"
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Service">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in TransactionSetupForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<hr />-->
+                </div>
+                    <div ba-panel ba-panel-title="" ba-panel-class="with-scroll">                        
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group " ng-show="FundTransferModel.SelectDefineServiceId.Value == '001'">
+                                    <input type="text" title="Fund Transfer Id" class="form-control" id="FundTransferId" ng-model="FundTransferModel.FundTransferId" placeholder="Fund Transfer Id" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group TextRequiredField" ng-show="FundTransferModel.SelectDefineServiceId.Value == '001'">
+                                    <input type="text" title="From Account No." class="form-control" id="FromSystemAccountNo"
+                                           ng-model="FundTransferModel.FromSystemAccountNo" placeholder="From Account No."
+                                           validation-no-space="true" validation-only-numbers="true" ng-disabled="true" required>
+                                    <span class="help-block error-block basic-block ">Required</span>
+                                </div>
+                            </div>
+                            <!--<div class="col-md-4">
+                    <div class="input-group TextRequiredField">
+                        <input type="text" title="From Account Balance" class="form-control" id="FromAccountBalance"
+                               ng-model="FundTransferModel.FromAccountBalance" placeholder="From Account Balance"
+                               validation-no-space="true" validation-only-numbers="true" ng-disabled="true" required>
+                        <span class="help-block error-block basic-block ">Required</span>
+                    </div>
+                </div>-->
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group" ng-show="FundTransferModel.SelectDefineServiceId.Value == '001'">
+                                    <input type="text" title="To Account No." class="form-control TextRequiredField" id="ToSystemAccountNo"
+                                           ng-model="FundTransferModel.ToSystemAccountNo" placeholder="To Account No." validation-no-space="true"
+                                           validation-only-numbers="true" ng-disabled="FundTransferModel.dis" required>
+                                    <span class="help-block error-block basic-block ">Required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group" ng-show="FundTransferModel.SelectDefineServiceId.Value == '001'">
+                                    <input type="text" title="Amount" class="form-control TextRequiredField" id="Amount" ng-model="FundTransferModel.Amount"
+                                           validation-no-space="true" validation-only-numbers="true" placeholder="Amount" required>
+                                    <span class="help-block error-block basic-block ">Required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group" ng-show="FundTransferModel.SelectDefineServiceId.Value == '001'">
+                                    <input type="text" title="Narration" class="form-control TextRequiredField" id="Narration" ng-model="FundTransferModel.Narration"
+                                           placeholder="Narration" required>
+                                    <span class="help-block error-block basic-block ">Required</span>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="input-group">
+                            <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-show="FundTransferModel.SelectDefineServiceId.Value == '001'"
+                                    ng-disabled="FundTransferForm.$invalid">{{SubmitBtn}}</button>
+                            <span> </span>
+                            <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-show="FundTransferModel.SelectDefineServiceId.Value == '001'"
+                                    ng-click="ClearFields()">Clear</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </form>
+</div>

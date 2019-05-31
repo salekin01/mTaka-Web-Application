@@ -1,0 +1,79 @@
+﻿<form name="PromoCodeConfigForm" class="form-inline" ng-submit="addData();">
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Account Type" ba-panel-class="with-scroll">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="ConfigurationId" ng-model="PromoCodeConfigModel.ConfigurationId" placeholder="Configuration Id" ng-disabled="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group ">
+                            <input type="text" title="Promo Code Length" class="form-control TextRequiredField" validation-no-space="true" validation-only-numbers="true"
+                                   id="PromoCodeLength" placeholder="Promo Code Length" ng-model="PromoCodeConfigModel.PromoCodeLength" required>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group TextRequiredField">
+                            <ui-select ng-model="PromoCodeConfigModel.TokenFormatId"
+                                       title="Select Promo Code Format"
+                                       class="btn-group bootstrap-select form-control"
+                                       append-to-body="true"
+                                       search-enabled="true"
+                                       id="TokenFormatId"
+                                           <!--ng-disabled="PromoCodeConfigModel.dis"-->
+                                           required>
+                                    <ui-select-match allow-clear="true" placeholder="Select Promo Code Format">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in TokenFormatForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group ">
+                            <input type="text" title="No. of Use for Introducer" class="form-control TextRequiredField" validation-no-space="true" validation-only-numbers="true"
+                                   id="TotalNoOfUseForIntroducer" placeholder="No. of Use for Introducer" ng-model="PromoCodeConfigModel.TotalNoOfUseForIntroducer" required>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group ">
+                            <input type="text" title="No. of Use" class="form-control TextRequiredField" validation-no-space="true" validation-only-numbers="true"
+                                   id="TotalNoOfUse" placeholder="No. of Use" ng-model="PromoCodeConfigModel.TotalNoOfUse" required>
+                            <span class="help-block error-block basic-block">Required</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">Introducer Allowed</div>
+                    <div class="col-md-2"><ba-switcher switcher-style="primary" id="IntroducerControlFlag" switcher-value="PromoCodeConfigModel.IntroducerControlFlag" ng-model="TransactionRulesModel.IntroducerControlFlag"> </ba-switcher></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><p>Send to Email Allowed</p></div>
+                    <div class="col-md-2"><ba-switcher switcher-style="primary" id="EmailFlag" switcher-value="PromoCodeConfigModel.EmailFlag" ng-model="TransactionRulesModel.EmailFlag"> </ba-switcher></div>
+                    <div class="col-md-2"><p>Send to SMS Allowed</p></div>
+                    <div class="col-md-2"><ba-switcher switcher-style="primary" id="SMSFlag" switcher-value="PromoCodeConfigModel.SMSFlag" ng-model="TransactionRulesModel.SMSFlag"> </ba-switcher></div>
+                </div>
+                <br />
+                <div class="input-group">
+                    <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="PromoCodeConfigModel.$invalid">{{SubmitBtn}}</button>
+                    <span> </span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="groupTable" ba-panel ba-panel-title="Promo Code Config Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                <div include-with-scope="../../app/pages/PromoCodeConfig/PromoCodeConfigTable.html"></div>
+            </div>
+        </div>
+    </div>
+</form>

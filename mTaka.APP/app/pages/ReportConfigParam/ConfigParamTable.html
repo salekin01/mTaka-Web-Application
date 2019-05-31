@@ -1,0 +1,28 @@
+﻿<div class="horizontal-scroll">
+   
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <td>Function Id</td>
+                <td>Parameter</td>
+                <td>Parameter Name</td>
+                <td>Data Type</td>
+                <td>Max Length</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in ReportConfigParamModel.ParamList">
+                <td ng-hide="true">{{$index + 1}}</td>
+                <td class="table-id">{{item.SlNo}}</td>
+                <td>{{item.FunctionId}}</td>
+                <td>{{item.Parameter}}</td>
+                <td>{{item.ParameterName}}</td>
+                <td>{{item.ParameterDatatype}}</td>
+                <td>{{item.ParameterMaxlength}}</td>
+                <td><span><button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeConfigParam($index)">Edit</button></span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

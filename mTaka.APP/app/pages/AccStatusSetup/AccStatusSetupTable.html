@@ -1,0 +1,22 @@
+﻿
+<table class="table table-bordered table-hover table-condensed">
+    <tr>
+        <td>#</td>
+        <td>Account Status Id</td>
+        <td>Account Status Name</td>
+        <td>Short Name</td>
+        <td>Action</td>
+    </tr>
+    <tr ng-repeat="item in AccStatusSetupList">
+        <td><span> {{$index + 1}} </span></td>
+        <td><span> {{item.AccountStatusId}} </span></td>
+        <td><span> {{item.AccountStatusName}} </span></td>
+        <td><span> {{item.AccountStatusShortName}} </span></td>
+        <td>
+            <span>
+                <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeAccStatusSetup($index)">Change</button>
+                <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteAccStatusSetup($index)">Delete</button>
+            </span>
+        </td>
+    </tr>
+</table>

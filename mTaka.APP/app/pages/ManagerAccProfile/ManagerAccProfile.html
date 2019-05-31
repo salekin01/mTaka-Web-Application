@@ -1,0 +1,501 @@
+﻿<form name="ManAccInfoForm" class="form-inline">
+    <div class="widgets">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="Manager Profile" ba-panel-class="with-scroll">
+                    <ba-wizard>
+                        <ba-wizard-step title="GENERAL INFO" form="vm.personalInfoForm">
+                            <div class=" row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManId" ng-model="ManModel.ManId" placeholder="Manager ID" ng-disabled="true">
+                                    </div>
+                                    <div class="input-group TextRequiredField">
+                                        <ui-select ng-model="ManModel.ManGrp"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="false"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManGrp"
+                                                   required>
+                                            <ui-select-match allow-clear="true" placeholder="Select Manager Group">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManGroupForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                    <div class="input-group TextRequiredField">
+                                        <ui-select ng-model="ManModel.ManType"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="false"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManType"
+                                                   required>
+                                            <ui-select-match allow-clear="true" placeholder="Select Manager Type">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManTypeForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                        <span class="help-block error-block basic-block">Required</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control TextRequiredField" id="ManNm" ng-model="ManModel.ManNm" placeholder="Manager Name"
+                                               required
+                                               validation-field-required="true"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManFatherNm" ng-model="ManModel.ManFatherNm" placeholder="Father's Name"                                               
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManMotherNm" ng-model="ManModel.ManMotherNm" placeholder="Mother's Name"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group ">
+                                        <ui-select ng-model="ManModel.ManBranchNm"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="false"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManBranchNm">
+                                            <ui-select-match allow-clear="true" placeholder="Select Branch">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManBrancForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                    <div class="input-group ">
+                                        <ui-select ng-model="ManModel.ManDepartment"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="false"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManDepartment">
+                                            <ui-select-match allow-clear="true" placeholder="Select Department">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManDepartmentForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                    <div class="input-group ">
+                                        <ui-select ng-model="ManModel.ManDesignation"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="false"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManDesignation">
+                                            <ui-select-match allow-clear="true" placeholder="Select Designation">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManDesignationForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!--<div class="input-group">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" id="ManDOB" uib-datepicker-popup="{{format}}" datepicker-options="options" ng-model="ManModel.ManDOB" is-open="opened" ng-required="true" alt-input-formats="altInputFormats" show-button-bar="false" placeholder="Date Of Birth" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="open()"><i class="ion-calendar"></i></button>
+                                            </span>
+                                        </p>
+                                    </div>-->
+                                    <div class="input-group">
+                                        <p class="input-group">
+                                            <input type="text"
+                                                   id="ManDOB" ng-model="ManModel.ManDOB"
+                                                   class="form-control TextRequiredField"
+                                                   title="Date Of Birth"
+                                                   placeholder="Date Of Birth"
+                                                   uib-datepicker-popup="dd/MM/yyyy"
+                                                   is-open="dpOpenStatus.withRequired" />
+                                            <span class="input-group-btn">
+                                                <button type="button"
+                                                        class="btn btn-default"
+                                                        ng-click="setDpOpenStatus('withRequired', $event)">
+                                                    <i class="ion-ios-calendar-outline"></i>
+                                                </button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <!--<p class="input-group">
+                                            <input type="text" class="form-control" id="ManDOJ" uib-datepicker-popup="{{format}}" datepicker-options="options" ng-model="ManModel.ManDOJ" is-open="opened" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" show-button-bar="false" placeholder="Date Of Join" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="open()"><i class="ion-calendar"></i></button>
+                                            </span>
+                                        </p>-->
+                                        <div class="input-group">
+                                            <p class="input-group">
+                                                <input type="text"
+                                                       id="ManDOJ" ng-model="ManModel.ManDOJ"
+                                                       class="form-control TextRequiredField"
+                                                       title="Date Of Join"
+                                                       placeholder="Date Of Join"
+                                                       uib-datepicker-popup="dd/MM/yyyy"
+                                                       is-open="dpOpenStatusDOJ.withRequired" />
+                                                <span class="input-group-btn">
+                                                    <button type="button"
+                                                            class="btn btn-default"
+                                                            ng-click="setDpOpenStatusDOJ('withRequired', $event)">
+                                                        <i class="ion-ios-calendar-outline"></i>
+                                                    </button>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group ">
+                                        <ui-select ng-model="ManModel.ManGender"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="false"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManGender">
+                                            <ui-select-match allow-clear="true" placeholder="Select Gender">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManGenderForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                    <!--<div class="input-group">
+                                        <select class="form-control" title="Category" selectpicker id="ManGender" ng-model="ManModel.ManGender">
+                                            <option selected>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div>-->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManPassport" ng-model="ManModel.ManPassport" placeholder="Passport No"
+                                               validation-only-numbers="{message:'Only Number', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManNationalId" ng-model="ManModel.ManNationalId" placeholder="National Id"
+                                               validation-only-numbers="{message:'Only Number', value: true}">
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control TextRequiredField" id="WalletAccountNo" ng-model="ManModel.WalletAccountNo" placeholder="Wallet Account No"
+                                               required
+                                               validation-field-required="true"
+                                               validation-only-numbers="{message:'Only Number', value: true}">
+                                    </div>
+                                </div>-->
+                            </div>
+                            <!--End of Manager Info-->
+                        </ba-wizard-step>
+                        <ba-wizard-step title="ADDRESS" form="productInfoForm">
+                            <div class="input-group " style="width:30%" title="Address Type">
+                                <ui-select ng-model="ManModel.Address"
+                                           class="btn-group bootstrap-select form-control"
+                                           ng-disabled="false"
+                                           append-to-body="true"
+                                           search-enabled="true"
+                                           id="Address">
+                                    <ui-select-match allow-clear="true" placeholder="Select Address Type">
+                                        {{$select.selected.Text}}
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="withSearchItem in AddressForDD | filter: $select.search">
+                                        <span ng-bind-html="withSearchItem.Text"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <h5 ng-show="ManModel.Address.Value == '001'">PRESENT ADDRESS</h5>
+                            <br />
+                            <div class="row" id="PresentAddress" ng-show="ManModel.Address.Value == '001'">
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManPresentAddress1" ng-model="ManModel.ManPresentAddress1" placeholder="Present Address 1"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManPresentAddress2" ng-model="ManModel.ManPresentAddress2" placeholder="Present Address 2"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select ng-model="ManModel.ManPresentCountry"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               id="ManPresentCountry">
+                                        <ui-select-match allow-clear="true" placeholder="Select Country">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in ManCountryForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group ">
+                                        <ui-select ng-model="ManModel.ManPresentCity"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="false"
+                                                   append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManPresentCity">
+                                            <ui-select-match allow-clear="true" placeholder="Select City">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManCityForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select ng-model="ManModel.ManPresentDistrict"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               id="ManPresentDistrict">
+                                        <ui-select-match allow-clear="true" placeholder="Select District">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select ng-model="ManModel.ManPresentThana"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               id="ManPresentThana">
+                                        <ui-select-match allow-clear="true" placeholder="Select Thana">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in PSInfoForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select ng-model="ManModel.ManPresentArea"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="false"
+                                               append-to-body="true"
+                                               search-enabled="true"
+                                               id="ManPresentArea">
+                                        <ui-select-match allow-clear="true" placeholder="Select Area">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <h5 ng-show="ManModel.Address.Value == '002'">PERMANENT ADDRESS</h5>
+                            <br />
+                            <div class="row" id="PermanentAddress" ng-show="ManModel.Address.Value == '002'">
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManPermanentAddress1" ng-model="ManModel.ManPermanentAddress1" placeholder="Permanent Address 1"
+                                               ng-disabled="ManModel.sameAsPresent == true"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManPermanentAddress2" ng-model="ManModel.ManPermanentAddress2" placeholder="Permanent Address 2"
+                                               ng-disabled="ManModel.sameAsPresent == true"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select ng-model="ManModel.ManPermanentCountry"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="ManModel.sameAsPresent == true" append-to-body="true"
+                                               search-enabled="true"
+                                               id="ManPermanentCountry">
+                                        <ui-select-match allow-clear="true" placeholder="Select Country">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in ManCountryForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group ">
+                                        <ui-select ng-model="ManModel.ManPermanentCity"
+                                                   class="btn-group bootstrap-select form-control"
+                                                   ng-disabled="ManModel.sameAsPresent == true" append-to-body="true"
+                                                   search-enabled="true"
+                                                   id="ManPermanentCity">
+                                            <ui-select-match allow-clear="true" placeholder="Select City">
+                                                {{$select.selected.Text}}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="withSearchItem in ManCityForDD | filter: $select.search">
+                                                <span ng-bind-html="withSearchItem.Text"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select ng-model="ManModel.ManPermanentDistrict"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="ManModel.sameAsPresent == true" append-to-body="true"
+                                               search-enabled="true"
+                                               id="ManPermanentDistrict">
+                                        <ui-select-match allow-clear="true" placeholder="Select District">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in DistrictInfoForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select ng-model="ManModel.ManPermanentThana"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="ManModel.sameAsPresent == true" append-to-body="true"
+                                               search-enabled="true"
+                                               id="ManPermanentThana">
+                                        <ui-select-match allow-clear="true" placeholder="Select Thana">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in PSInfoForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select ng-model="ManModel.ManPermanentArea"
+                                               class="btn-group bootstrap-select form-control"
+                                               ng-disabled="ManModel.sameAsPresent == true" append-to-body="true"
+                                               search-enabled="true"
+                                               id="ManPermanentArea">
+                                        <ui-select-match allow-clear="true" placeholder="Select Area">
+                                            {{$select.selected.Text}}
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="withSearchItem in AreaInfoForDD | filter: $select.search">
+                                            <span ng-bind-html="withSearchItem.Text"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="input-group" ng-show="ManModel.Address.Value == '002'">
+                                <br />
+                                <input type="checkbox" name="sameAsPresent" id="sameAsPresent" ng-model="ManModel.sameAsPresent"> Same As Present<br>
+                            </div>
+                        </ba-wizard-step>
+
+                        <ba-wizard-step title="OFFICIAL INFO">
+                            <h5>OFFICIAL INFO</h5>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManNm" ng-model="ManModel.ManEmpId" placeholder="Employee ID"
+                                               validation-only-number="{message:'Only Number', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManPowerOfAttorney" ng-model="ManModel.ManPowerOfAttorney" placeholder="Power Of Attorney"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManTaxIdNo" ng-model="ManModel.ManTaxIdNo" placeholder="TAX ID No">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManOfficePhone" ng-model="ManModel.ManOfficePhone" placeholder="Phone"
+                                               validation-only-numbers="{message:'Only Number', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManFax" ng-model="ManModel.ManFax" placeholder="Fax"
+                                               validation-only-numbers="{message:'Only Number', value: true}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="ManEmail" ng-model="ManModel.ManEmail" placeholder="Email"
+                                               validation-email="true">
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-3">
+        <div class="input-group">
+            <input type="text" class="form-control" id="ManCell" ng-model="ManModel.ManCell" placeholder="Cell No"
+                   required
+                   validation-field-required="true"
+                   validation-only-numbers="{message:'Only Number', value: true}">
+        </div>
+    </div>-->
+
+                                <!--<div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="Others" ng-model="ManModel.Others" placeholder="Others"
+                                               required
+                                               validation-field-required="true"
+                                               validation-only-alphabets="{message:'Please Enter Name (Only A-Z)', value: true}">
+                                    </div>
+                                </div>-->
+                            </div>
+
+                        </ba-wizard-step>
+                    </ba-wizard>
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="ManAccInfoForm.$invalid" ng-click="addData()">{{SubmitBtn}}</button>
+                        <span> </span>
+                        <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="ManagerAccProfileTable" ba-panel ba-panel-title="Manager Profile Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                                <div include-with-scope="../../app/pages/ManagerAccProfile/ManagerAccProfileTable.html"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

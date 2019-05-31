@@ -1,0 +1,80 @@
+﻿<!--<div ng-controller="EODCtrl as EODCtrlVm">-->
+<div>
+    <form name="EODForm" class="form-inline" ng-submit="addData();">
+        <div class="row">
+            <div class="col-md-12">
+                <div ba-panel ba-panel-title="EOD Type Setup" ba-panel-class="with-scroll">
+
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Saturday</span>
+                            <input input type="time" class="form-control" id="EODTime1" ng-model="EODModel.EODTime1"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Sunday</span>
+                            <input type="time" class="form-control" id="EODTime2" ng-model="EODModel.EODTime2" placeholder="EOD Time" value="12:00" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Monday</span>
+                            <input type="time" class="form-control" id="EODTime3" ng-model="EODModel.EODTime3" placeholder="EOD Time" value="12:00" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Tuesday</span>
+                            <input type="time" class="form-control" id="EODTime4" ng-model="EODModel.EODTime4" placeholder="EOD Time" value="12:00" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Wednesday</span>
+                            <input type="time" class="form-control" id="EODTime5" ng-model="EODModel.EODTime5" placeholder="EOD Time" value="12:00" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Thursday</span>
+                            <input type="time" class="form-control" id="EODTime6" ng-model="EODModel.EODTime6" placeholder="EOD Time" value="12:00" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">Friday</span>
+                            <input type="time" class="form-control" id="EODTime7" ng-model="EODModel.EODTime7" placeholder="EOD Time" value="12:00" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="EODTable" ba-panel ba-panel-title="Process Table" ba-panel-class="with-scroll" ng-init="loadData();">
+                    <div include-with-scope="../../app/pages/EOD/EODTable.html"></div>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary editable-table-button btn-xs" ng-disabled="EODForm.$invalid">Save</button>
+                <button type="submit" class="btn btn-primary editable-table-button btn-xs">Clear</button>
+            </div>
+        </div>
+        <!--<div class="col-md-12">
+            <div class="input-group" style="padding-left:15px;">
+                
+                <span> </span>
+                <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="ClearFields()">Clear</button>
+            </div>
+        </div>-->
+    </form>
+
+
+
+</div>
+
+<style>
+    .form-inline .input-group .input-group-addon, .form-inline .input-group .input-group-btn, .form-inline .input-group .form-control {
+        width: 200px !important;
+    }
+</style>

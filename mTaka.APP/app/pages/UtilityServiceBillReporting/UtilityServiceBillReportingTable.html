@@ -1,0 +1,29 @@
+﻿
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Id</td>
+            <td>Provider Name</td>
+            <td>Report Field Name</td>
+            <td>Report Field Type</td>
+            <!--<td>Field Type</td>-->
+            <td>Report Field Acc No</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in FieldList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.ReportingId}} </span></td>
+            <td><span> {{item.ProviderName}} </span></td>
+            <td><span> {{item.FieldName}} </span></td>
+            <td><span> {{item.ReportingType}} </span></td>
+            <!--<td><span> {{item.FieldType}} </span></td>-->
+            <td><span> {{item.ReportFieldAccNo}} </span></td>
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeField($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteAccType($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+

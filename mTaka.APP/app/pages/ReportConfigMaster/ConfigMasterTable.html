@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Function Id</td>
+            <td>Report Name</td>
+            <td>File Name</td>
+            <td>Connection</td>
+            <td>Genareate Before EOD</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in ConfigMasterList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.FunctionId}} </span></td>
+            <td><span> {{item.ReportName}} </span></td>
+            <td><span> {{item.ReportFile}} </span></td>
+            <td><span> {{item.ConnectionId}} </span></td>
+            <td><span> {{item.GenBeforeEod}} </span></td>
+            <td>
+                <span>
+                    <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeReportConfig($index)">Change</button>
+                    <!--<button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteUnionInfo($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+    <!--<div has-permission='Edit'>
+        <button  type="button" class="btn btn-primary editable-table-button btn-xs">Permission</button>
+    </div>-->
+</body>
+</html>

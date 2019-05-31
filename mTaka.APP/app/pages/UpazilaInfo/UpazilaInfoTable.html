@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Upazila Id</td>
+            <td>Upazila Name</td>
+            <td>Upazila Short Name</td>
+            <td>District</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in UpazilaInfoList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.UpazilaId}} </span></td>
+            <td><span> {{item.UpazilaNm}} </span></td>
+            <td><span> {{item.UpazilaShortNm}} </span></td>
+            <td><span> {{item.DistrictNm}} </span></td>
+            <td>
+                <span>
+                    <button type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeUpazilaInfo($index)">Change</button>
+                    <!--<button type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteUpazilaInfo($index)">Delete</button>-->
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr>
+            <td>#</td>
+            <td>Country Id</td>
+            <td>Country Name</td>
+            <td>Country Short Name</td>
+            <td>ISO Code</td>
+            <td>CB Code</td>
+            <td>Nationality Name</td>
+            <td>Currency</td>
+            <td>Native Country Flag</td>
+            <td>Action</td>
+        </tr>
+        <tr ng-repeat="item in CountryInfoList">
+            <td><span> {{$index + 1}} </span></td>
+            <td><span> {{item.CountryId}} </span></td>
+            <td><span> {{item.CountryNm}} </span></td>
+            <td><span> {{item.CountryShortNm}} </span></td>
+            <td><span> {{item.ISOCode}} </span></td>
+            <td><span> {{item.CBCode}} </span></td>
+            <td><span> {{item.NationalityName}} </span></td>
+            <td><span> {{item.CurrencyNm}} </span></td>
+            <td><span> {{item.NativeCountryFlag}} </span></td>
+            <td>
+                <span>
+                    <button has-permission='Edit' type="button" class="btn btn-primary editable-table-button btn-xs" ng-click="changeCountryInfo($index)">Change</button>
+                    <button has-permission='Delete' type="button" class="btn btn-danger editable-table-button btn-xs" ng-click="deleteCountryInfo($index)">Delete</button>
+                </span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
