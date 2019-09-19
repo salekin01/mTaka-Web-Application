@@ -37,7 +37,7 @@
 		<li>Angularjs,                version="1.3.1"</li>
 		<li>Angular-Template (blur-Admin)</li>
     <li>Unit of Work(UoW)</li>
-    <li>Dependency Injection(DI)</li>
+    <li>Dependency Injection (DI)</li>
     <li>Generic Repository</li>
     <li>Lambda Expression</li>
     <li>LINQ</li>
